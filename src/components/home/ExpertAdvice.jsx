@@ -15,15 +15,6 @@ const ExpertAdvice = () => {
           What Do You Do When Your Tween's Beauty Routine Goes Too Far
         </h1>
       </div>
-      <div className="divider text-xs">
-        Advertisement - Continue Reading Below
-      </div>
-      <div className="flex justify-center">
-        <img
-          src="https://tpc.googlesyndication.com/simgad/2446551959029324805"
-          alt="add-img"
-        />
-      </div>
     </div>
   );
 };

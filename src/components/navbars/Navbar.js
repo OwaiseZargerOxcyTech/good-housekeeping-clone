@@ -50,7 +50,9 @@ function Navbar() {
       </div>
       <div className="mr-[5%] navbar-end">
         {/* Other navbar elements */}
-        <a className="btn btn-sm btn-accent rounded-sm font-bold">SUBSCRIBE</a>
+        <a className="btn btn-sm btn-accent rounded-sm font-bold hidden sm:flex">
+          SUBSCRIBE
+        </a>
         <ul className="menu menu-horizontal px-1">
           <li>
             <a className="font-semibold">SIGN IN</a>

@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {/* <MobileTabletNavbar /> */}
             {/* body */}
-            <div className="flex min-h-screen flex-col items-center justify-between  p-4 ">
+            <div className="flex min-h-screen flex-col items-center justify-between  p-4 sm:mx-[5%] ">
               {children}
             </div>
           </div>
