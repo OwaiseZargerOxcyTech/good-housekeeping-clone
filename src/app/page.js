@@ -3,6 +3,7 @@ import BeautyLab from "@/components/home/BeautyLab";
 import BestLuggage from "@/components/home/BestLuggage";
 import ExpertAdvice from "@/components/home/ExpertAdvice";
 import Latest from "@/components/home/Latest";
+import MembershipPortal from "@/components/home/MembershipPortal";
 import Products from "@/components/home/Products";
 import SpringBreak from "@/components/home/SpringBreak";
 import SustainableLiving from "@/components/home/SustainableLiving";
@@ -24,6 +25,7 @@ export default function Home() {
       <Products />
       <SpringBreak />
       <BeautyLab />
+      <MembershipPortal />
       <Latest />
     </main>
   );

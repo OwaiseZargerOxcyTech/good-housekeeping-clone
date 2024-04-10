@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbars/Navbar";
 import MobileTabletNavbar from "@/components/navbars/MobileTabletNavbar";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             <div className="flex min-h-screen flex-col items-center justify-between  p-4 sm:mx-[5%] ">
               {children}
             </div>
+            <Footer />
           </div>
           <div className="drawer-side">
             <label
