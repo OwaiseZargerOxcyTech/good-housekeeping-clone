@@ -53,7 +53,7 @@ const ThinkGreen = () => {
               </div>
             </div>
           </div>
-          <div className="m-4 sm:mt-0 ">
+          <div className="m-4 sm:mt-0 hidden sm:flex">
             <img
               src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
               alt="think-green-img"
