@@ -2,13 +2,15 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="py-10 flex justify-center">
+    <footer className="py-10 sm:mx-[7%]">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
-        <div className="lg:flex lg:justify-between lg:items-center">
+        <div className="lg:flex lg:justify-between lg:items-center ">
           {/* Social Media Links */}
-          <div className="mb-6 sm:flex items-center lg:mb-0">
-            <a className="btn btn-ghost text-xl mr-4 mb-4 sm:mb-0">BLOG APP</a>
+          <a className="btn btn-ghost text-xl mr-4 mb-4 sm:mb-0">
+            Good Blog Application
+          </a>
+          <div className="mb-6 sm:flex items-center justify-between lg:mb-0">
             <div className="flex space-x-4 lg:space-x-8">
               {/* Social Media Icons */}
               <a href="#" aria-label="Twitter">
@@ -136,8 +138,9 @@ const Footer = () => {
             </ul>
           </nav>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-4">
-          {/* Logo Section */}
+        {/* Logo Section */}
+
+        {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 pt-4">
           <div>
             <a href="/" className="inline-block mb-4">
               <img
@@ -147,16 +150,16 @@ const Footer = () => {
               />
             </a>
           </div>
-        </div>
+        </div> */}
         {/* Additional Content */}
-        <div className="text-[11px] leading-10 text-black font-sans font-bold">
+        {/* <div className="text-[11px] leading-10 text-black font-sans font-bold">
           <p>A Part of Example Media</p>
           <p>
             Example participates in various affiliate marketing programs, which
             means we may get paid commissions on editorially chosen products
             purchased through our links to retailer sites.
           </p>
-        </div>
+        </div> */}
 
         {/* Copyright and Legal Links */}
         <div className="text-[11px] leading-10 text-black font-sans font-bold">

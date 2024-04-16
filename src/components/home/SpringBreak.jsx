@@ -22,7 +22,7 @@ const SpringBreak = () => {
             src="https://hips.hearstapps.com/hmg-prod/images/gh-travel-awards-index-65551789783ff.png?crop=1xw:1xh;center,top&resize=1120:*"
             alt="spring-break-img"
           />
-          <div className="flex flex-col justify-center items-center py-4 bg-slate-200 ">
+          <div className="flex flex-col justify-center items-center py-4 bg-[#F8F3F4]">
             <p className=" text-xs lg:text-base text-center font-bold font-neutra text-black">
               THE BEST IN FAMILY TRAVEL
             </p>

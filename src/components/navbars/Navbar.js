@@ -23,25 +23,27 @@ function Navbar() {
           </svg>
         </label> */}
         {/* logo */}
-        <a className="btn btn-ghost text-xl py-0">BLOG APP</a>
+        <a className="btn btn-ghost text-lg flex-shrink">
+          Good Blog Application
+        </a>
       </div>
       {/* Navbar items */}
       <div className="navbar">
         <div className="nav-list hidden sm:flex">
           <ul className="menu menu-horizontal px-8">
-            <li className="font-semibold  text-black tracking-wide">
+            <li className="font-semibold text-xs  text-black tracking-wide">
               <a>PRODUCT REVIEWS</a>
             </li>
-            <li className="font-semibold  text-black tracking-wide">
+            <li className="font-semibold text-xs text-black tracking-wide">
               <a>LIFE</a>
             </li>
-            <li className="font-semibold  text-black tracking-wide">
+            <li className="font-semibold text-xs text-black tracking-wide">
               <a>HEALTH</a>
             </li>
-            <li className="font-semibold  text-black tracking-wide">
+            <li className="font-semibold text-xs text-black tracking-wide">
               <a>FOOD</a>
             </li>
-            <li className="font-semibold  text-black">
+            <li className="font-semibold text-xs text-black">
               <a>BEAUTY</a>
             </li>
           </ul>

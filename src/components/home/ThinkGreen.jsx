@@ -14,7 +14,7 @@ const ThinkGreen = () => {
               src="https://hips.hearstapps.com/hmg-prod/images/cleaning-questions-natural-cleaners-1607634435.png?crop=1.00xw:0.503xh;0,0.191xh&resize=1120:*"
               alt="think-green-img"
             />
-            <div className="py-4 bg-slate-200 ">
+            <div className="py-4 bg-[#F8F3F4]">
               <p className="font-sans text-xs lg:text-base text-center font-bold  text-black">
                 EARTH MONTH
               </p>
@@ -53,7 +53,7 @@ const ThinkGreen = () => {
               </div>
             </div>
           </div>
-          <div className="m-4 sm:mt-0 hidden sm:flex">
+          <div className="m-4 sm:mt-0 hidden sm:block">
             <img
               src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
               alt="think-green-img"
