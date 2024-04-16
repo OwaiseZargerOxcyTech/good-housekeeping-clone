@@ -4,9 +4,9 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="navbar sticky top-0 bg-white shadow-sm p-0">
+    <div className="flex flex-col sm:flex-row items-center sticky top-0 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
-      <div className="sm:ml-[7%]">
+      <div className="sm:ml-[7%] flex">
         {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,27 +28,29 @@ function Navbar() {
         </a>
       </div>
       {/* Navbar items */}
-      <div className="navbar">
-        <div className="nav-list hidden sm:flex">
-          <ul className="menu menu-horizontal px-8">
-            <li className="font-semibold text-xs  text-black tracking-wide">
-              <a>PRODUCT REVIEWS</a>
-            </li>
-            <li className="font-semibold text-xs text-black tracking-wide">
-              <a>LIFE</a>
-            </li>
-            <li className="font-semibold text-xs text-black tracking-wide">
-              <a>HEALTH</a>
-            </li>
-            <li className="font-semibold text-xs text-black tracking-wide">
-              <a>FOOD</a>
-            </li>
-            <li className="font-semibold text-xs text-black">
-              <a>BEAUTY</a>
-            </li>
-          </ul>
-        </div>
+
+      <div className="nav-list">
+        <ul className="menu menu-horizontal sm:space-x-6 ">
+          <li className="font-bold text-xs  text-black tracking-widest">
+            <a className="hover:bg-transparent hover:text-current">
+              PRODUCT REVIEWS
+            </a>
+          </li>
+          <li className="font-bold text-xs text-black tracking-widest">
+            <a className="hover:bg-transparent hover:text-current">LIFE</a>
+          </li>
+          <li className="font-bold text-xs text-black tracking-widest">
+            <a className="hover:bg-transparent hover:text-current">HEALTH</a>
+          </li>
+          <li className="font-bold text-xs text-black tracking-widest">
+            <a className="hover:bg-transparent hover:text-current">FOOD</a>
+          </li>
+          <li className="font-bold text-xs hover:bg-transparent hover:text-current text-black">
+            <a className="hover:bg-transparent hover:text-current">BEAUTY</a>
+          </li>
+        </ul>
       </div>
+
       {/* <div className="mr-[5%] navbar-end">
         <a className="btn btn-sm btn-accent rounded-sm font-bold hidden sm:flex">
           SUBSCRIBE
