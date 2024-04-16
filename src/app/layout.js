@@ -14,16 +14,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <div className="drawer">
-          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+          {/* <input
+            id="my-drawer"
+            type="checkbox"
+            // className="drawer-toggle" //uncomment to use drawer
+          /> */}
           <div className="drawer-content">
             {/* Page content here */}
             {/* navbar */}
+
             <Navbar />
             {/* <MobileTabletNavbar /> */}
             {/* body */}
-            <div className="flex min-h-screen flex-col items-center justify-between  p-4 sm:mx-[5%] ">
+            <div className="flex min-h-screen flex-col items-center justify-between p-2">
               {children}
             </div>
             <Footer />

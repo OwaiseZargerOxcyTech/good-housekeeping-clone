@@ -12,16 +12,20 @@ import ThinkGreen from "@/components/home/ThinkGreen";
 export default function Home() {
   return (
     <main>
-      <SustainableLiving />
+      <div className="bg-[#F8F3F4]">
+        <SustainableLiving />
+      </div>
       <ThinkGreen />
-      <ExpertAdvice />
+      <div className="bg-[#F8F3F4]">
+        <ExpertAdvice />
+      </div>
       <div className="divider text-xs">
         Advertisement - Continue Reading Below
       </div>
       <Advertisement />
       <BestLuggage />
-      <div className="border-t border-black"></div>
-      <div className="border-t mt-1 border-black"></div>
+      <div className="border-t border-black sm:mx-[7%]"></div>
+      <div className="border-t mt-1 border-black sm:mx-[7%]"></div>
       <Products />
       <SpringBreak />
       <BeautyLab />

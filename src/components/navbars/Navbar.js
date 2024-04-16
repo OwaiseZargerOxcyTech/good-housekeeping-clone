@@ -6,9 +6,8 @@ function Navbar() {
   return (
     <div className="navbar sticky shadow-sm p-0">
       {/* Content of your navbar */}
-      <div className="ml-[5%]">
-        <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
-          {/* menu icon */}
+      <div className="sm:ml-[7%]">
+        {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -22,34 +21,33 @@ function Navbar() {
               d="M4 6h16M4 12h16M4 18h16"
             ></path>
           </svg>
-        </label>
+        </label> */}
         {/* logo */}
-        <a className="btn btn-ghost text-xl">BLOG APP</a>
+        <a className="btn btn-ghost text-xl py-0">BLOG APP</a>
       </div>
       {/* Navbar items */}
       <div className="navbar">
-        <div className="nav-list hidden lg:flex">
+        <div className="nav-list hidden sm:flex">
           <ul className="menu menu-horizontal px-8">
-            <li className="font-semibold">
+            <li className="font-semibold  text-black tracking-wide">
               <a>PRODUCT REVIEWS</a>
             </li>
-            <li className="font-semibold">
+            <li className="font-semibold  text-black tracking-wide">
               <a>LIFE</a>
             </li>
-            <li className="font-semibold">
+            <li className="font-semibold  text-black tracking-wide">
               <a>HEALTH</a>
             </li>
-            <li className="font-semibold">
+            <li className="font-semibold  text-black tracking-wide">
               <a>FOOD</a>
             </li>
-            <li className="font-semibold">
+            <li className="font-semibold  text-black">
               <a>BEAUTY</a>
             </li>
           </ul>
         </div>
       </div>
-      <div className="mr-[5%] navbar-end">
-        {/* Other navbar elements */}
+      {/* <div className="mr-[5%] navbar-end">
         <a className="btn btn-sm btn-accent rounded-sm font-bold hidden sm:flex">
           SUBSCRIBE
         </a>
@@ -58,7 +56,6 @@ function Navbar() {
             <a className="font-semibold">SIGN IN</a>
           </li>
         </ul>
-        {/* search icon */}
         <button className="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +72,7 @@ function Navbar() {
             />
           </svg>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
