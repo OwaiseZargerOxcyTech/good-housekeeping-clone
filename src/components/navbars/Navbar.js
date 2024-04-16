@@ -4,7 +4,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="flex flex-col sm:flex-row items-center sticky top-0 bg-white shadow-sm p-0">
+    <div className="flex items-center sticky top-0 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
       <div className="sm:ml-[7%] flex">
         {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
@@ -30,7 +30,7 @@ function Navbar() {
       {/* Navbar items */}
 
       <div className="nav-list">
-        <ul className="menu menu-horizontal sm:space-x-6 ">
+        <ul className="menu menu-horizontal hidden sm:flex sm:space-x-6 ">
           <li className="font-bold text-xs  text-black tracking-widest">
             <a className="hover:bg-transparent hover:text-current">
               PRODUCT REVIEWS
