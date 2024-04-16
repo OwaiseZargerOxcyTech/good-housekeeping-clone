@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbars/Navbar";
-import MobileTabletNavbar from "@/components/navbars/MobileTabletNavbar";
 import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,42 +14,48 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <div className="drawer">
-          {/* <input
-            id="my-drawer"
-            type="checkbox"
-            // className="drawer-toggle" //uncomment to use drawer
-          /> */}
-          <div className="drawer-content">
-            {/* Page content here */}
-            {/* navbar */}
-
-            <Navbar />
-            {/* <MobileTabletNavbar /> */}
-            {/* body */}
-            <div className="flex min-h-screen flex-col items-center justify-between p-2">
-              {children}
-            </div>
-            <Footer />
-          </div>
-          <div className="drawer-side">
-            <label
-              htmlFor="my-drawer"
-              aria-label="close sidebar"
-              className="drawer-overlay"
-            ></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-              {/* Sidebar content here */}
-              <li>
-                <a>Sidebar Item 1</a>
-              </li>
-              <li>
-                <a>Sidebar Item 2</a>
-              </li>
-            </ul>
-          </div>
+        <Navbar />
+        <div className="flex min-h-screen flex-col items-center justify-between px-2">
+          {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
 }
+
+// drawer
+
+// <div className="drawer">
+// <input
+//   id="my-drawer"
+//   type="checkbox"
+//   className="drawer-toggle" //uncomment to use drawer
+// />
+// <div className="drawer-content">
+//   {/* Page content here */}
+//   {/* navbar */}
+//   <Navbar />
+//   {/* body */}
+//   <div className="flex min-h-screen flex-col items-center justify-between p-2">
+//     {children}
+//   </div>
+//   <Footer />
+// </div>
+// <div className="drawer-side">
+//   <label
+//     htmlFor="my-drawer"
+//     aria-label="close sidebar"
+//     className="drawer-overlay"
+//   ></label>
+//   <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+//     Sidebar content here
+//     <li>
+//       <a>Sidebar Item 1</a>
+//     </li>
+//     <li>
+//       <a>Sidebar Item 2</a>
+//     </li>
+//   </ul>
+// </div>
+// </div>

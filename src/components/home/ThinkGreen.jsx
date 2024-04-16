@@ -9,10 +9,11 @@ const ThinkGreen = () => {
         </h1>
         <div className="border-t border-black my-4"></div>
         <div className="sm:flex">
-          <div>
+          <div className="sm:w-3/4">
             <img
-              src="https://hips.hearstapps.com/hmg-prod/images/cleaning-questions-natural-cleaners-1607634435.png?crop=1.00xw:0.503xh;0,0.191xh&resize=1120:*"
+              src="https://hips.hearstapps.com/hmg-prod/images/cleaning-questions-natural-cleaners-1607634435.png?crop=1.00xw:0.503xh;0,0.191xh&resize=1200:*"
               alt="think-green-img"
+              className="w-full"
             />
             <div className="py-4 bg-[#F8F3F4]">
               <p className="font-sans text-xs lg:text-base text-center font-bold  text-black">
@@ -22,7 +23,7 @@ const ThinkGreen = () => {
                 The Best Eco-Friendly Cleaning Products
               </h1>
             </div>
-            <div className="p-4 flex flex-wrap lg:justify-evenly">
+            <div className="p-4 flex flex-wrap lg:justify-between">
               <div className="w-1/2 lg:w-1/4 p-2">
                 <img
                   src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-1355386396.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=360:*"
@@ -53,10 +54,11 @@ const ThinkGreen = () => {
               </div>
             </div>
           </div>
-          <div className="m-4 sm:mt-0 hidden sm:block">
+          <div className="m-4 sm:mt-0 hidden sm:block w-1/4">
             <img
               src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
               alt="think-green-img"
+              className="w-full"
             />
           </div>
         </div>

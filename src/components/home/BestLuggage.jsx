@@ -2,7 +2,7 @@ import React from "react";
 
 const BestLuggage = () => {
   return (
-    <div className="Best-luggage mt-4 lg:my-8 flex justify-center items-center sm:p-8 lg:h-screen">
+    <div className="Best-luggage mt-4 lg:my-8 flex justify-center items-center sm:p-8 ">
       <div>
         <img
           src="https://hips.hearstapps.com/hmg-prod/images/ghk-032024-indexteting-luggage-225-srgb-660daf9f03d7d.jpg?crop=0.875xw:0.656xh;0.0705xw,0.183xh&resize=1120:*"

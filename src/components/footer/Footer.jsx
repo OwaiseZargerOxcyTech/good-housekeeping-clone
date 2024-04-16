@@ -7,8 +7,8 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="lg:flex lg:justify-between lg:items-center ">
           {/* Social Media Links */}
-          <a className="btn btn-ghost text-xl mr-4 mb-4 sm:mb-0">
-            Good Blog Application
+          <a className="btn btn-ghost text-xl hover:bg-transparent hover:text-current">
+            BLOG APP
           </a>
           <div className="mb-6 sm:flex items-center justify-between lg:mb-0">
             <div className="flex space-x-4 lg:space-x-8">
@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
         <div className="sm:flex sm:flex-wrap sm:justify-between sm:w-[70%]">
           <nav className="mt-4">
-            <ul className=" text-[11px] text-black font-sans font-bold space-y-4">
+            <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
                   Subscribe
@@ -81,7 +81,7 @@ const Footer = () => {
             </ul>
           </nav>
           <nav className="mt-4">
-            <ul className=" text-[11px] text-black font-sans font-bold space-y-4">
+            <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
                   Subscribe
@@ -100,7 +100,7 @@ const Footer = () => {
             </ul>
           </nav>
           <nav className="mt-4">
-            <ul className=" text-[11px] text-black font-sans font-bold space-y-4">
+            <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
                   Subscribe
@@ -119,7 +119,7 @@ const Footer = () => {
             </ul>
           </nav>
           <nav className="mt-4">
-            <ul className=" text-[11px] text-black font-sans font-bold space-y-4">
+            <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
                   Subscribe
@@ -152,7 +152,7 @@ const Footer = () => {
           </div>
         </div> */}
         {/* Additional Content */}
-        {/* <div className="text-[11px] leading-10 text-black font-sans font-bold">
+        {/* <div className="text-sm leading-10 text-black font-sans font-bold">
           <p>A Part of Example Media</p>
           <p>
             Example participates in various affiliate marketing programs, which
@@ -162,7 +162,7 @@ const Footer = () => {
         </div> */}
 
         {/* Copyright and Legal Links */}
-        <div className="text-[11px] leading-10 text-black font-sans font-bold">
+        <div className="text-sm leading-10 text-black font-sans font-bold">
           <p>©2024 Example Media, Inc. All Rights Reserved.</p>
         </div>
         <ul className="flex flex-wrap mt-4 text-xs text-black font-sans font-bold">

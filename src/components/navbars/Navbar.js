@@ -4,7 +4,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="navbar sticky shadow-sm p-0">
+    <div className="navbar sticky top-0 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
       <div className="sm:ml-[7%]">
         {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
@@ -23,8 +23,8 @@ function Navbar() {
           </svg>
         </label> */}
         {/* logo */}
-        <a className="btn btn-ghost text-lg flex-shrink">
-          Good Blog Application
+        <a className="btn btn-ghost text-lg hover:bg-transparent hover:text-current p-2 ">
+          BLOG APP
         </a>
       </div>
       {/* Navbar items */}
