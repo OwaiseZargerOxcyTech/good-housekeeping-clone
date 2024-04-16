@@ -4,9 +4,9 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="flex items-center sticky top-0 z-50 bg-white shadow-sm p-0">
+    <div className="flex flex-col sm:flex-row sm:items-center sm:sticky top-0 z-50 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
-      <div className="sm:ml-[7%] flex">
+      <div className="sm:ml-[7%] flex border-b sm:border-none">
         {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,9 +29,10 @@ function Navbar() {
       </div>
       {/* Navbar items */}
 
-      <div className="nav-list">
-        <ul className="menu menu-horizontal hidden sm:flex sm:space-x-6 ">
-          <li className="font-bold text-xs  text-black tracking-widest">
+      <div className="nav-list overflow-x-auto ">
+        <ul className="menu menu-horizontal flex-nowrap  sm:space-x-6">
+          {/* List items */}
+          <li className="font-bold text-xs text-black tracking-widest">
             <a className="hover:bg-transparent hover:text-current">
               PRODUCT REVIEWS
             </a>
@@ -45,7 +46,7 @@ function Navbar() {
           <li className="font-bold text-xs text-black tracking-widest">
             <a className="hover:bg-transparent hover:text-current">FOOD</a>
           </li>
-          <li className="font-bold text-xs hover:bg-transparent hover:text-current text-black">
+          <li className="font-bold text-xs text-black tracking-widest">
             <a className="hover:bg-transparent hover:text-current">BEAUTY</a>
           </li>
         </ul>
