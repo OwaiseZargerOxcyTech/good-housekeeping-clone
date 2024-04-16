@@ -4,7 +4,7 @@ import React from "react";
 
 function Navbar() {
   return (
-    <div className="flex items-center sticky top-0 bg-white shadow-sm p-0">
+    <div className="flex items-center sticky top-0 z-50 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
       <div className="sm:ml-[7%] flex">
         {/* <label htmlFor="my-drawer" className="btn btn-ghost drawer-button">

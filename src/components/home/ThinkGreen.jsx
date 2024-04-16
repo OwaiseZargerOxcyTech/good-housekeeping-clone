@@ -58,12 +58,14 @@ const ThinkGreen = () => {
               </div>
             </div>
           </div>
-          <div className="m-4 sm:mt-0 hidden sm:block w-1/4">
-            <img
-              src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
-              alt="think-green-img"
-              className="w-full"
-            />
+          <div className="m-4 sm:mt-0 hidden  sm:block w-1/4">
+            <div className="sticky top-12">
+              <img
+                src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
+                alt="think-green-img"
+                className="w-full"
+              />
+            </div>
           </div>
         </div>
       </div>
