@@ -29,28 +29,32 @@ const ThinkGreen = () => {
                   src="https://hips.hearstapps.com/hmg-prod/images/gettyimages-1355386396.jpg?crop=0.668xw:1.00xh;0.167xw,0&resize=360:*"
                   alt="think-green-card-1-img"
                 />
-                <p>Famous Quotes for Earth Day</p>
+                <p className="text-black">Famous Quotes for Earth Day</p>
               </div>
               <div className="w-1/2 lg:w-1/4 p-2">
                 <img
                   src="https://hips.hearstapps.com/hmg-prod/images/family-planting-flowers-together-royalty-free-image-1710534764.jpg?crop=0.668xw:1.00xh;0.179xw,0&resize=360:*"
                   alt="think-green-card-2-img"
                 />
-                <p>Earth Day Activities for Adults and Children</p>
+                <p className="text-black">
+                  Earth Day Activities for Adults and Children
+                </p>
               </div>
               <div className="w-1/2 lg:w-1/4 p-2">
                 <img
                   src="https://hips.hearstapps.com/hmg-prod/images/recycling-symbols-1618244867.jpg?crop=0.502xw:1.00xh;0.250xw,0&resize=360:*"
                   alt="think-green-card-3-img"
                 />
-                <p>How to decode Recycling Symbols</p>
+                <p className="text-black">How to decode Recycling Symbols</p>
               </div>
               <div className="w-1/2 lg:w-1/4 p-2">
                 <img
                   src="https://hips.hearstapps.com/hmg-prod/images/ghk050120ghr-ecofriendly-003-1602876105.jpg?crop=0.669xw:1.00xh;0.130xw,0&resize=360:*"
                   alt="think-green-card-4-img"
                 />
-                <p>Your Ultimate Guide to Sustainable Living</p>
+                <p className="text-black">
+                  Your Ultimate Guide to Sustainable Living
+                </p>
               </div>
             </div>
           </div>

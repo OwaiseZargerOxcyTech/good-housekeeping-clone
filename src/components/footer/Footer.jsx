@@ -7,7 +7,7 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="lg:flex lg:justify-between lg:items-center ">
           {/* Social Media Links */}
-          <a className="btn btn-ghost text-xl hover:bg-transparent hover:text-current">
+          <a className="btn btn-ghost text-xl text-black hover:bg-transparent hover:text-current">
             BLOG APP
           </a>
           <div className="mb-6 sm:flex items-center justify-between lg:mb-0">

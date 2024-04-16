@@ -10,7 +10,7 @@ const SustainableLiving = () => {
           className="w-full"
         />
         <div className="flex flex-col justify-center items-center m-4">
-          <p className="font-sans text-xs lg:text-base font-bold">
+          <p className="font-sans text-xs lg:text-base font-bold text-black">
             REDUCE, REUSE, RECYCLE
           </p>
           <h1 className="font-serif lg:text-4xl font-bold text-center text-black">

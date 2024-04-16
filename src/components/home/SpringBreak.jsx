@@ -27,7 +27,7 @@ const SpringBreak = () => {
             <p className=" text-xs lg:text-base text-center font-bold font-neutra text-black">
               THE BEST IN FAMILY TRAVEL
             </p>
-            <h1 className="font-serif lg:text-4xl font-bold text-center">
+            <h1 className="font-serif lg:text-4xl font-bold text-black text-center">
               Good HouseKeeping's 2024 Family Travel Awards
             </h1>
           </div>
@@ -40,7 +40,7 @@ const SpringBreak = () => {
               alt="spring-break-img"
               className="w-20 lg:w-32 m-2"
             />
-            <p className="w-[50%] font-serif font-thin">
+            <p className="w-[50%] font-serif font-thin text-black">
               The Best All-Inclusive Resorts for Families
             </p>
           </div>
@@ -50,7 +50,7 @@ const SpringBreak = () => {
               alt="spring-break-img"
               className="w-20 lg:w-32 m-2"
             />
-            <p className="font-serif">The Best Alaska Cruises</p>
+            <p className="font-serif text-black">The Best Alaska Cruises</p>
           </div>
           <div className="flex items-center">
             <img
@@ -58,7 +58,9 @@ const SpringBreak = () => {
               alt="spring-break-img"
               className="w-20 lg:w-32 m-2"
             />
-            <p className="font-serif ">20 Best Places to Visit in April</p>
+            <p className="font-serif text-black ">
+              20 Best Places to Visit in April
+            </p>
           </div>
           <div className="flex items-center">
             <img
@@ -66,7 +68,9 @@ const SpringBreak = () => {
               alt="spring-break-img"
               className="w-20 lg:w-32 m-2"
             />
-            <p className="w-[50%] font-serif">The Best Family Vacation Ideas</p>
+            <p className="w-[50%] font-serif text-black">
+              The Best Family Vacation Ideas
+            </p>
           </div>
         </div>
       </div>

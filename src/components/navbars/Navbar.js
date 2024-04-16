@@ -23,7 +23,7 @@ function Navbar() {
           </svg>
         </label> */}
         {/* logo */}
-        <a className="btn btn-ghost text-lg hover:bg-transparent hover:text-current p-2 ">
+        <a className="btn btn-ghost text-lg text-black hover:bg-transparent hover:text-current p-2 ">
           BLOG APP
         </a>
       </div>
