@@ -12,6 +12,12 @@ import ThinkGreen from "@/components/home/ThinkGreen";
 export default function Home() {
   return (
     <main>
+      <div className="hidden sm:flex justify-center py-4 bg-slate-100">
+        <img
+          src="https://tpc.googlesyndication.com/simgad/14571752723877178338"
+          alt="ad"
+        />
+      </div>
       <div className="bg-[#F8F3F4]">
         <SustainableLiving />
       </div>
@@ -23,6 +29,8 @@ export default function Home() {
         Advertisement - Continue Reading Below
       </div>
       <Advertisement />
+      <div className="border-t mt-8 border-black sm:mx-[7%]"></div>
+      <div className="border-t mt-1 border-black sm:mx-[7%]"></div>
       <BestLuggage />
       <div className="border-t border-black sm:mx-[7%]"></div>
       <div className="border-t mt-1 border-black sm:mx-[7%]"></div>

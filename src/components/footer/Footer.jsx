@@ -11,7 +11,7 @@ const Footer = () => {
             BLOG APP
           </a>
           <div className="mb-6 sm:flex items-center justify-between lg:mb-0">
-            <div className="flex space-x-4 lg:space-x-8">
+            <div className="flex space-x-4 lg:space-x-8 ">
               {/* Social Media Icons */}
               <a href="#" aria-label="Twitter">
                 <img
@@ -60,8 +60,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="sm:flex sm:flex-wrap sm:justify-between sm:w-[70%]">
-          <nav className="mt-4">
+        <div className="flex flex-wrap sm:justify-between ">
+          <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
@@ -75,64 +75,64 @@ const Footer = () => {
               </li>
               <li>
                 <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  Give GH as a Gift
+                  Advertise online
                 </a>
               </li>
             </ul>
           </nav>
-          <nav className="mt-4">
+          <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
-                  Subscribe
-                </a>
-              </li>
-              <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  About us
-                </a>
-              </li>
-              <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
                   Give GH as a Gift
+                </a>
+              </li>
+              <li>
+                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                  Contact us
+                </a>
+              </li>
+              <li>
+                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                  Customer Service
                 </a>
               </li>
             </ul>
           </nav>
-          <nav className="mt-4">
+          <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
-                  Subscribe
+                  Other Subscriptions
                 </a>
               </li>
               <li>
                 <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  About us
+                  Work For Good Housekeeping
                 </a>
               </li>
               <li>
                 <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  Give GH as a Gift
+                  Events and Promotions
                 </a>
               </li>
             </ul>
           </nav>
-          <nav className="mt-4">
+          <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
                 <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
-                  Subscribe
+                  Newsletter
                 </a>
               </li>
               <li>
                 <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  About us
+                  Media Kit
                 </a>
               </li>
               <li>
                 <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
-                  Give GH as a Gift
+                  Giveaways
                 </a>
               </li>
             </ul>
@@ -162,7 +162,7 @@ const Footer = () => {
         </div> */}
 
         {/* Copyright and Legal Links */}
-        <div className="text-sm leading-10 text-black font-sans font-bold">
+        <div className="text-sm leading-10 mt-8 text-black font-sans font-bold">
           <p>©2024 Example Media, Inc. All Rights Reserved.</p>
         </div>
         <ul className="flex flex-wrap mt-4 text-xs text-black font-sans font-bold">
