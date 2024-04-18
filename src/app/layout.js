@@ -1,9 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbars/Navbar";
 import Footer from "@/components/footer/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "@/components/common/fonts";
 
 export const metadata = {
   title: "Blog User App",

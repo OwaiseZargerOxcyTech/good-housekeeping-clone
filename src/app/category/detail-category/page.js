@@ -38,7 +38,9 @@ const DetailCategory = () => {
               <p className="font-sans text-xs lg:text-base text-center font-bold  text-black">
                 Godrej's
               </p>
-              <h1 className="font-serif lg:text-4xl font-bold text-center  text-black">
+              <h1
+                className={`font-sans lg:text-4xl font-bold text-center  text-black`}
+              >
                 The Best Vacuum Cleaners
               </h1>
             </div>
@@ -56,9 +58,13 @@ const DetailCategory = () => {
           </div>
           {/* right side */}
           <div className="sm:m-4 w-full sm:mt-0 sm:w-2/5 lg:w-1/4">
-            <div className="social media p-4 shadow-md border rounded-md mb-2 flex flex-col items-center">
-              <h1 className="text-xl">Over 2,000,000+ Readers</h1>
-              <p className="text-sm">Get Fresh Updates on Social Media</p>
+            <div className="social media p-4 bg-blue-400 shadow-md border rounded-md mb-2 flex flex-col items-center">
+              <h1 className="text-xl font-bold text-white">
+                Over 2,000,000+ Readers
+              </h1>
+              <p className="text-sm text-white">
+                Get Fresh Updates on Social Media
+              </p>
               <div className="flex gap-2 mt-4">
                 <SocialMedia />
               </div>

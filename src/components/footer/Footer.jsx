@@ -1,5 +1,6 @@
 import React from "react";
 import SocialMedia from "../common/SocialMedia";
+import { raleway } from "../common/fonts";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         {/* Main Footer Content */}
         <div className="lg:flex lg:justify-between lg:items-center ">
           {/* Social Media Links */}
-          <a className="btn btn-ghost text-xl text-black hover:bg-transparent hover:text-current">
+          <a className="btn btn-ghost text-xl font-bold text-black hover:bg-transparent hover:text-current">
             BLOG APP
           </a>
           <div className="mb-6 sm:flex items-center justify-between lg:mb-0">
@@ -22,17 +23,17 @@ const Footer = () => {
           <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
-                <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
+                <a href="#" className={`${raleway.className}`}>
                   Subscribe
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   About us
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Advertise online
                 </a>
               </li>
@@ -41,17 +42,17 @@ const Footer = () => {
           <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
-                <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
+                <a href="#" className={`${raleway.className}`}>
                   Give GH as a Gift
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Contact us
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Customer Service
                 </a>
               </li>
@@ -60,17 +61,17 @@ const Footer = () => {
           <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
-                <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
+                <a href="#" className={`${raleway.className}`}>
                   Other Subscriptions
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Work For Good Housekeeping
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Events and Promotions
                 </a>
               </li>
@@ -79,17 +80,17 @@ const Footer = () => {
           <nav className="mt-4 w-1/2 sm:w-1/4">
             <ul className=" text-sm text-black font-sans font-bold space-y-4">
               <li>
-                <a href="https://shop.goodhousekeeping.com/gh-all-access-membership.html?cds_tracking_code=ghk_footer">
+                <a href="#" className={`${raleway.className}`}>
                   Newsletter
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Media Kit
                 </a>
               </li>
               <li>
-                <a href="https://join.goodhousekeeping.com/pubs/HR/GHK/GHK1_Plans.jsp?cds_mag_code=GHK&cds_page_id=249773&cds_tracking_code=ghk_circulesredirect">
+                <a href="#" className={`${raleway.className}`}>
                   Giveaways
                 </a>
               </li>
