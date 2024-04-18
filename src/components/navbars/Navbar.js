@@ -1,5 +1,6 @@
 // Navbar.js
 
+import Link from "next/link";
 import React from "react";
 
 function Navbar() {
@@ -23,9 +24,9 @@ function Navbar() {
           </svg>
         </label> */}
         {/* logo */}
-        <a className="btn btn-ghost text-lg text-black hover:bg-transparent hover:text-current p-2 ">
-          BLOG APP
-        </a>
+        <p className="btn btn-ghost text-lg text-black hover:bg-transparent hover:text-current p-2 ">
+          <Link href="/">BLOG APP</Link>
+        </p>
       </div>
       {/* Navbar items */}
 
@@ -47,7 +48,9 @@ function Navbar() {
             <a className="hover:bg-transparent hover:text-current">FOOD</a>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
-            <a className="hover:bg-transparent hover:text-current">BEAUTY</a>
+            <p className="hover:bg-transparent hover:text-current">
+              <Link href="/category">CATEGORY</Link>
+            </p>
           </li>
         </ul>
       </div>
