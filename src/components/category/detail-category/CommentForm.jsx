@@ -29,7 +29,7 @@ const CommentForm = () => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-1 p-2 border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 bg-white p-2 border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
         />
       </div>
@@ -45,14 +45,14 @@ const CommentForm = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 p-2 border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 p-2  bg-white border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
         />
       </div>
       <div className="mb-4">
         <label
           htmlFor="comment"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm  font-medium text-gray-700"
         >
           Comment
         </label>
@@ -60,7 +60,7 @@ const CommentForm = () => {
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="mt-1 p-2 border block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 p-2  bg-white border block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           rows="6"
           required
         ></textarea>
