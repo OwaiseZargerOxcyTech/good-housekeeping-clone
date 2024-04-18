@@ -1,15 +1,17 @@
 "use client";
 import BlogContent from "@/components/category/detail-category/BlogContent";
+import {
+  mainParagraph,
+  mainTitle,
+  secondaryParagraph,
+  secondaryTitle,
+} from "@/components/category/detail-category/BlogData";
 import CommentForm from "@/components/category/detail-category/CommentForm";
 import LatestPosts from "@/components/category/detail-category/LatestPosts";
 import SocialMedia from "@/components/common/SocialMedia";
 import React from "react";
 
 const DetailCategory = () => {
-  const title = "Welcome to My Website";
-  const paragraph =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod commodo nunc ac varius. Integer pretium auctor metus ac ultricies.";
-
   const latestPosts = [
     { id: 1, title: "Introduction to Next.js" },
     { id: 2, title: "Building Responsive UI with Tailwind CSS" },
@@ -40,7 +42,11 @@ const DetailCategory = () => {
                 The Best Vacuum Cleaners
               </h1>
             </div>
-            <BlogContent title={title} paragraph={paragraph} />
+            <BlogContent title={mainTitle} paragraph={mainParagraph} />
+            <BlogContent
+              title={secondaryTitle}
+              paragraph={secondaryParagraph}
+            />
             <div className="my-4">
               <h1 className="text-2xl text-black font-bold mb-4">
                 Submit Your Comment
@@ -48,6 +54,7 @@ const DetailCategory = () => {
             </div>
             <CommentForm />
           </div>
+          {/* right side */}
           <div className="sm:m-4 w-full sm:mt-0 sm:w-2/5 lg:w-1/4">
             <div className="social media p-4 shadow-md border rounded-md mb-2 flex flex-col items-center">
               <h1 className="text-xl">Over 2,000,000+ Readers</h1>
@@ -65,6 +72,13 @@ const DetailCategory = () => {
             </div>
             <div className="max-w-lg w-full">
               <LatestPosts posts={latestPosts} />
+            </div>
+            <div className="ad mt-4">
+              <img
+                src="https://tpc.googlesyndication.com/simgad/2311008341451174436"
+                alt="side-detail"
+                className="w-full"
+              />
             </div>
           </div>
         </div>
