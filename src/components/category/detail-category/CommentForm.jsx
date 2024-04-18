@@ -16,7 +16,10 @@ const CommentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-8 bg-slate-50 border rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      className="p-8 w-full xl:w-1/2 bg-slate-50 border rounded-md"
+    >
       <div className="mb-4">
         <label
           htmlFor="name"
@@ -29,7 +32,7 @@ const CommentForm = () => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-1 bg-white p-2 border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 bg-white p-2 border w-full lg:w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
         />
       </div>
@@ -45,7 +48,7 @@ const CommentForm = () => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 p-2  bg-white border w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          className="mt-1 p-2  bg-white border w-full lg:w-1/2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
         />
       </div>
