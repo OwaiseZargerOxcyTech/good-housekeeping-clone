@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Userh {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  userRole  String
+  blocked   String?
+  blogs     Blogh[]   @relation("UserToBlogh")
+  blogslive     Blogliveh[]   @relation("UserToBlogliveh")
+  }
+
+  model Categoryh {
+  id        Int      @id @default(autoincrement())
+  name     String   @unique
+  blogs     Blogh[]   @relation("CategoryToBlogh")
+  blogslive     Blogliveh[]   @relation("CategoryToBlogliveh")
+  }
+
+  model Blogh {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  slug        String
+  content     String?    @db.Text
+  image       String?    // Assuming the image URL will be stored as a string
+  published   String
+  delete_request String?
+  createdAt   DateTime  @default(now())
+  author      Userh      @relation("UserToBlogh", fields: [author_id], references: [id])
+  author_id   Int
+  category      Categoryh      @relation("CategoryToBlogh", fields: [category_id], references: [id])
+  category_id   Int
+  bloglive_id Int?
+}
+
+model Blogliveh {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  slug        String
+  content     String?    @db.Text
+  image       String?    // Assuming the image URL will be stored as a string
+  published   String
+  delete_request String?
+  createdAt   DateTime  @default(now())
+  author      Userh      @relation("UserToBlogliveh", fields: [author_id], references: [id])
+  author_id   Int
+  category      Categoryh      @relation("CategoryToBlogliveh", fields: [category_id], references: [id])
+  category_id   Int
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  username  String   @unique
+  password  String
+  userRole  String
+  blocked   String?
+  blogs     Blog[]   @relation("UserToBlog")
+  blogslive     Bloglive[]   @relation("UserToBloglive")
+  }
+
+  model Blog {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  slug        String
+  content     String?    @db.Text
+  image       String?    // Assuming the image URL will be stored as a string
+  published   String
+  delete_request String?
+  createdAt   DateTime  @default(now())
+  author      User      @relation("UserToBlog", fields: [author_id], references: [id])
+  author_id   Int
+  bloglive_id Int?
+}
+
+model Bloglive {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  slug        String
+  content     String?    @db.Text
+  image       String?    // Assuming the image URL will be stored as a string
+  published   String
+  delete_request String?
+  createdAt   DateTime  @default(now())
+  author      User      @relation("UserToBloglive", fields: [author_id], references: [id])
+  author_id   Int
+}

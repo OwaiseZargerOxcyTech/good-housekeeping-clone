@@ -1,7 +1,6 @@
 import "./globals.css";
-import Navbar from "@/components/navbars/Navbar";
-import Footer from "@/components/footer/Footer";
 import { inter } from "@/components/common/fonts";
+import AuthProviders from "@/components/providers/AuthProviders";
 
 export const metadata = {
   title: "Blog User App",
@@ -12,11 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Navbar />
-        <div className="flex min-h-screen flex-col items-center justify-between px-2">
-          {children}
-        </div>
-        <Footer />
+        <AuthProviders>
+          <div>{children}</div>
+        </AuthProviders>
       </body>
     </html>
   );
