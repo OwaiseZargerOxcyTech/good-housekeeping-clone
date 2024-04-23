@@ -17,6 +17,7 @@ const AllBlogAdminTable = () => {
   const [published, setPublished] = useState();
   const [slug, setSlug] = useState();
   const [blogLiveId, setBlogLiveId] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   const router = useRouter();
 
@@ -33,6 +34,21 @@ const AllBlogAdminTable = () => {
         ),
       },
 
+      {
+        accessorKey: "category_id",
+        header: "Category",
+        size: 150,
+        Cell: ({ cell }) => {
+          const category = categories.find(
+            (category) => category.id === cell.getValue()
+          );
+          return (
+            <div style={{ whiteSpace: "normal", wordBreak: "break-word" }}>
+              {category && category.name}
+            </div>
+          );
+        },
+      },
       {
         accessorKey: "published",
         header: "Published",
@@ -137,7 +153,7 @@ const AllBlogAdminTable = () => {
         ),
       },
     ],
-    []
+    [categories]
   );
 
   const handleBlogApproval = async (row) => {
@@ -237,11 +253,37 @@ const AllBlogAdminTable = () => {
   };
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/combinedapi", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apiName: "getcategories",
+          }),
+        });
+
+        const { error, result } = await response.json();
+
+        if (error !== undefined) {
+          console.log("Categories Get error:", error);
+        }
+        setCategories(result);
+      } catch (error) {
+        console.error("Categories Get operation error", error);
+      }
+    };
+
+    fetchCategories();
     handleGetBlogs();
   }, []);
 
   const handleBlogView = async (row) => {
-    router.push(`/blog3/${row.original.slug}`);
+    // router.push(`/blog/${row.original.slug}`);
+    const url = `/blog/${row.original.slug}`;
+    window.open(url, "_blank");
   };
 
   const handleBlogLiveView = async (row) => {
@@ -254,7 +296,11 @@ const AllBlogAdminTable = () => {
 
     const originalSlug = parts.join("-");
 
-    router.push(`/blog3/${originalSlug}`);
+    // router.push(`/blog/${originalSlug}`);
+
+    const url = `/blog/${originalSlug}`;
+
+    window.open(url, "_blank");
   };
 
   const handleBlogEdit = async (row) => {

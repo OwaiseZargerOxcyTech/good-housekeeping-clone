@@ -45,7 +45,6 @@ export async function PUT(req) {
         where: { id: selectedId },
         data: {
           author_id: parseInt(author_id),
-          category_id: parseInt(category_id),
         },
       });
     } else if (
@@ -58,7 +57,6 @@ export async function PUT(req) {
         where: { id: selectedId },
         data: {
           author_id: parseInt(author_id),
-          category_id: parseInt(category_id),
         },
       });
     } else {
@@ -66,14 +64,12 @@ export async function PUT(req) {
         where: { id: selectedId },
         data: {
           author_id: parseInt(author_id),
-          category_id: parseInt(category_id),
         },
       });
       await prisma.blogliveh.update({
         where: { id: parseInt(blogLiveId) },
         data: {
           author_id: parseInt(author_id),
-          category_id: parseInt(category_id),
         },
       });
     }
@@ -85,7 +81,8 @@ export async function PUT(req) {
       if (
         blog1.title === title &&
         blog1.description === description &&
-        blog1.content === content
+        blog1.content === content &&
+        blog1.category_id === category_id
       ) {
         return NextResponse.json(
           {
@@ -119,20 +116,20 @@ export async function PUT(req) {
 
       const trimmedExtension = fileExtension.replace(".", "");
 
-      const modifiedSlug = slug;
-      const parts = modifiedSlug.split("-");
+      // const modifiedSlug = slug;
+      // const parts = modifiedSlug.split("-");
 
-      if (parts[parts.length - 1] === "00000") {
-        parts.pop();
-      }
+      // if (parts[parts.length - 1] === "00000") {
+      //   parts.pop();
+      // }
 
-      const originalSlug = parts.join("-");
+      // const originalSlug = parts.join("-");
 
-      const newPath = `./public/blog_images/${originalSlug}.${trimmedExtension}`;
+      // const newPath = `./public/blog_images/${originalSlug}.${trimmedExtension}`;
 
-      if (fs.existsSync(previousImagePath)) {
-        fs.renameSync(previousImagePath, newPath); // Rename the previous image file
-      }
+      // if (fs.existsSync(previousImagePath)) {
+      //   fs.renameSync(previousImagePath, newPath); // Rename the previous image file
+      // }
 
       const newImagePath = `/blog_images/${slug}.${trimmedExtension}`;
 
@@ -147,6 +144,7 @@ export async function PUT(req) {
             published: "N",
             author_id: parseInt(author_id),
             bloglive_id: selectedId,
+            category_id: parseInt(category_id),
           },
         });
       } else {
@@ -160,6 +158,7 @@ export async function PUT(req) {
             image: newImagePath,
             published: "N",
             author_id: parseInt(author_id),
+            category_id: parseInt(category_id),
           },
         });
       }
@@ -187,6 +186,7 @@ export async function PUT(req) {
             published: "N",
             author_id: parseInt(author_id),
             bloglive_id: selectedId,
+            category_id: parseInt(category_id),
           },
         });
       } else {
@@ -200,6 +200,7 @@ export async function PUT(req) {
             image: imagePath,
             published: "N",
             author_id: parseInt(author_id),
+            category_id: parseInt(category_id),
           },
         });
       }

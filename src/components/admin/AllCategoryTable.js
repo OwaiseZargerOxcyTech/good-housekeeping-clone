@@ -8,11 +8,23 @@ const AllCategoryTable = () => {
   const [categoriesData, setCategoriesData] = useState([]);
   const [category, setCategory] = useState("");
   const [selectedId, setSelectedId] = useState();
+  const [selectedIsActive, setSelectedIsActive] = useState("");
   const columns = useMemo(
     () => [
       {
         accessorKey: "name",
         header: "Category Name",
+        size: 150,
+        Cell: ({ cell }) => (
+          <div style={{ whiteSpace: "normal", wordBreak: "break-word" }}>
+            {cell.getValue()}
+          </div>
+        ),
+      },
+
+      {
+        accessorKey: "is_active",
+        header: "Is Active?",
         size: 150,
         Cell: ({ cell }) => (
           <div style={{ whiteSpace: "normal", wordBreak: "break-word" }}>
@@ -79,9 +91,14 @@ const AllCategoryTable = () => {
     handleGetCategories();
   }, []);
 
+  const handleIsActiveChange = (event) => {
+    setSelectedIsActive(event.target.value);
+  };
+
   const handleCategoryEdit = async (row) => {
     setSelectedId(row.original.id);
     setCategory(row.original.name);
+    setSelectedIsActive(row.original.is_active);
   };
 
   const handleCategoryUpdate = async (e) => {
@@ -97,6 +114,7 @@ const AllCategoryTable = () => {
           apiName: "updatecategory",
           selectedId,
           category,
+          selectedIsActive,
         }),
       });
 
@@ -162,6 +180,29 @@ const AllCategoryTable = () => {
               className="input input-bordered w-full placeholder-gray-500"
             />
           </label>
+
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text">Is Active?</span>
+            </div>
+          </label>
+
+          <select
+            onChange={handleIsActiveChange}
+            value={selectedIsActive || ""}
+            className="select select-bordered w-full"
+          >
+            <option disabled value="">
+              Select state?
+            </option>
+            <option>active</option>
+            <option>inactive</option>
+            {selectedIsActive === "" && (
+              <option disabled style={{ display: "none" }}>
+                Select state?
+              </option>
+            )}
+          </select>
 
           <div className="modal-action">
             <form method="dialog">

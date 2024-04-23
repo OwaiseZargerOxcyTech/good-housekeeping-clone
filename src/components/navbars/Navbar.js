@@ -39,7 +39,9 @@ function Navbar() {
             </a>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
-            <a className="hover:bg-transparent hover:text-current">LIFE</a>
+            <p className="hover:bg-transparent hover:text-current">
+              <Link href="/life">LIFE</Link>
+            </p>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
             <a className="hover:bg-transparent hover:text-current">HEALTH</a>

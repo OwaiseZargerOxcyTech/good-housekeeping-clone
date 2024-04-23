@@ -3,9 +3,12 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(req, res) {
+export async function POST(req, res) {
   try {
-    // const blogs = await prisma.blog.findMany();
+    const body = await req.json();
+    let { employeeId } = body;
+
+    employeeId = parseInt(employeeId);
 
     const blogs = await prisma.$queryRaw`
     SELECT *
@@ -23,6 +26,7 @@ export async function GET(req, res) {
         b.bloglive_id,
         b.category_id
       FROM public."Blogh" b
+      WHERE b.author_id = ${employeeId}
     
       UNION ALL
     
@@ -40,16 +44,16 @@ export async function GET(req, res) {
         bl.category_id
       FROM public."Blogliveh" bl
       LEFT JOIN public."Blogh" b ON bl.id = b.bloglive_id
-      WHERE b.bloglive_id IS NULL
+      WHERE bl.author_id = ${employeeId} and b.bloglive_id IS NULL
     ) AS combined
     ORDER BY title;
     `;
 
     return NextResponse.json({ result: blogs }, { status: 200 });
   } catch (error) {
-    console.error("Error during getting blogs data:", error);
+    console.error("Error during blog fetching:", error);
     return NextResponse.json(
-      { error: "Failed to get blogs data" },
+      { error: "Failed to fetch blog" },
       { status: 500 }
     );
   }

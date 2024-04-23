@@ -255,7 +255,12 @@ export async function POST(req, res) {
             slug: blog.slug,
             published: "Y",
             delete_request: blog.delete_request,
-            author_id: blog.author_id,
+            author: {
+              connect: { id: blog.author_id },
+            },
+            category: {
+              connect: { id: blog.category_id },
+            },
           },
         });
 
@@ -322,6 +327,7 @@ export async function POST(req, res) {
             published: "Y",
             delete_request: blog.delete_request,
             author_id: blog.author_id,
+            category_id: blog.category_id,
           },
         });
         await prisma.blogh.delete({ where: { id: blog.id } });
@@ -352,11 +358,12 @@ export async function POST(req, res) {
     }
   } else if (apiName === "addcategory") {
     try {
-      const { category } = body;
+      const { category, selectedIsActive } = body;
 
       await prisma.categoryh.create({
         data: {
           name: category,
+          is_active: selectedIsActive,
         },
       });
 
@@ -373,12 +380,13 @@ export async function POST(req, res) {
     }
   } else if (apiName === "updatecategory") {
     try {
-      const { category, selectedId } = body;
+      const { category, selectedId, selectedIsActive } = body;
 
       await prisma.categoryh.update({
         where: { id: selectedId },
         data: {
           name: category,
+          is_active: selectedIsActive,
         },
       });
 

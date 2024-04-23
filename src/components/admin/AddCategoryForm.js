@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 const AddCategoryForm = () => {
   const [category, setCategory] = useState();
+  const [selectedIsActive, setSelectedIsActive] = useState("");
+
+  const handleIsActiveChange = (event) => {
+    setSelectedIsActive(event.target.value);
+  };
 
   const handleAddCategory = async (e) => {
     try {
@@ -15,6 +20,7 @@ const AddCategoryForm = () => {
         body: JSON.stringify({
           apiName: "addcategory",
           category,
+          selectedIsActive,
         }),
       });
 
@@ -48,6 +54,30 @@ const AddCategoryForm = () => {
                   className="input input-bordered w-full  font-bold"
                 />
               </label>
+
+              <label className="form-control font-bold w-full">
+                <div className="label">
+                  <span className="label-text">Is Active?</span>
+                </div>
+              </label>
+
+              <select
+                onChange={handleIsActiveChange}
+                value={selectedIsActive || ""}
+                className="select select-bordered w-full"
+              >
+                <option disabled value="">
+                  Select state?
+                </option>
+                <option>active</option>
+                <option>inactive</option>
+                {selectedIsActive === "" && (
+                  <option disabled style={{ display: "none" }}>
+                    Select state?
+                  </option>
+                )}
+              </select>
+
               <div className="flex justify-center col-span-2 mt-3">
                 <button
                   onClick={(e) => handleAddCategory(e)}

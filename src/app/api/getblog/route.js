@@ -16,7 +16,13 @@ export async function POST(req, res) {
       blog = await prisma.blogliveh.findFirst({ where: { slug } });
     }
 
-    return NextResponse.json({ result: blog }, { status: 200 });
+    const categoryData = await prisma.categoryh.findUnique({
+      where: { id: blog.category_id },
+    });
+
+    const result = { ...blog, category: categoryData.name };
+
+    return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     console.error("Error during blog fetching:", error);
     return NextResponse.json(
