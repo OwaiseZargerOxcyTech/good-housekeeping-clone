@@ -22,10 +22,12 @@
     "suneditor-react": "^3.6.1"
   },
   "devDependencies": {
+    "@vercel/blob": "^0.23.2",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.9.0",
     "md5": "^2.3.0",
     "next-auth": "^4.24.7",
+    "node-fetch": "^3.3.2",
     "postcss": "^8",
     "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0"
