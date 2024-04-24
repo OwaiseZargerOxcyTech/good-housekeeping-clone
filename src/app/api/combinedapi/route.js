@@ -295,24 +295,43 @@ export async function POST(req, res) {
         const liveblog = await prisma.blogliveh.findFirst({
           where: { id: blog.bloglive_id },
         });
+        if (
+          blog.image !== null &&
+          blog.image !== "null" &&
+          blog.image !== undefined &&
+          blog.image !== ""
+        ) {
+          const BlobName = getBlobNameFromUrl(liveblog.image);
 
-        const BlobName = getBlobNameFromUrl(liveblog.image);
+          deleteBlob(BlobName);
 
-        deleteBlob(BlobName);
-
-        await prisma.blogliveh.update({
-          where: { id: blog.bloglive_id },
-          data: {
-            title: blog.title,
-            description: blog.description,
-            content: blog.content,
-            published: "Y",
-            image: blog.image,
-            delete_request: blog.delete_request,
-            author_id: blog.author_id,
-            category_id: blog.category_id,
-          },
-        });
+          await prisma.blogliveh.update({
+            where: { id: blog.bloglive_id },
+            data: {
+              title: blog.title,
+              description: blog.description,
+              content: blog.content,
+              published: "Y",
+              image: blog.image,
+              delete_request: blog.delete_request,
+              author_id: blog.author_id,
+              category_id: blog.category_id,
+            },
+          });
+        } else {
+          await prisma.blogliveh.update({
+            where: { id: blog.bloglive_id },
+            data: {
+              title: blog.title,
+              description: blog.description,
+              content: blog.content,
+              published: "Y",
+              delete_request: blog.delete_request,
+              author_id: blog.author_id,
+              category_id: blog.category_id,
+            },
+          });
+        }
         await prisma.blogh.delete({ where: { id: blog.id } });
       }
 
