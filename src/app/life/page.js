@@ -4,21 +4,21 @@ import LifeBlogs from "@/components/life/LifeBlogs";
 import Navbar from "@/components/navbars/Navbar";
 import React from "react";
 
-// export const metadata = {
-//   metadataBase: new URL("http://localhost:3000"),
-//   keywords: [
-//     "Hey Blog User",
-//     "Top Life Blogs",
-//     "Top Health Blogs",
-//     "Top Food Blogs",
-//   ],
-//   title: {
-//     default: "Life Page",
-//   },
-//   openGraph: {
-//     description: "Life Page description",
-//   },
-// };
+export const metadata = {
+  metadataBase: new URL("https://good-housekeeping-clone-red.vercel.app"),
+  keywords: [
+    "Hey Blog User",
+    "Top Life Blogs",
+    "Top Health Blogs",
+    "Top Food Blogs",
+  ],
+  title: {
+    default: "Life Page",
+  },
+  openGraph: {
+    description: "Life Page description",
+  },
+};
 
 const Life = () => {
   return (
