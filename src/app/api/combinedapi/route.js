@@ -307,6 +307,7 @@ export async function POST(req, res) {
             description: blog.description,
             content: blog.content,
             published: "Y",
+            image: blog.image,
             delete_request: blog.delete_request,
             author_id: blog.author_id,
             category_id: blog.category_id,

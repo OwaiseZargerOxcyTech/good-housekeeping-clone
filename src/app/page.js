@@ -12,7 +12,7 @@ import ThinkGreen from "@/components/home/ThinkGreen";
 import Navbar from "@/components/navbars/Navbar";
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://good-housekeeping-clone-red.vercel.app"),
   keywords: [
     "Hey Blog User",
     "Top Life Blogs",
