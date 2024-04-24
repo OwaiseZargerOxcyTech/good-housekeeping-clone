@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 const FoodBlogs = () => {
   const [blogData, setBlogData] = useState([]);
+  const [imageData, setImageData] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -29,6 +30,36 @@ const FoodBlogs = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    async function fetchImages() {
+      const imageMap = {};
+      for (const blog of blogData) {
+        if (blog.image) {
+          try {
+            const response = await fetch(blog.image);
+            if (response.ok) {
+              const blob = await response.blob();
+              const imageUrl = URL.createObjectURL(blob);
+              imageMap[blog.id] = imageUrl;
+            } else {
+              console.error(
+                `Failed to fetch image for blog with ID ${blog.id}`
+              );
+            }
+          } catch (error) {
+            console.error(
+              `Error fetching image for blog with ID ${blog.id}:`,
+              error
+            );
+          }
+        }
+      }
+      setImageData(imageMap);
+    }
+
+    fetchImages();
+  }, [blogData]);
+
   return (
     <div className="flex flex-wrap sm:mx-[7%]">
       {/* Product Card 1 */}
@@ -36,7 +67,8 @@ const FoodBlogs = () => {
         blogData.map((blog) => (
           <div className="w-1/2 lg:w-1/4 p-4">
             <img
-              src={`${blog.image}?t=${new Date().getTime()}`}
+              // src={`${blog.image}?t=${new Date().getTime()}`}
+              src={imageData[blog.id]}
               alt="img"
               className="w-full"
             />

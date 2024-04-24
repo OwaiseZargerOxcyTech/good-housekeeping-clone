@@ -6,6 +6,8 @@ import md5 from "md5";
 
 const prisma = new PrismaClient();
 
+export const dynamic = "force-dynamic";
+
 export const authOption = {
   pages: {
     signIn: "/login",

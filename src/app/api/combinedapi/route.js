@@ -3,8 +3,49 @@ import { PrismaClient } from "@prisma/client";
 import md5 from "md5";
 import fs, { writeFile } from "fs";
 import path from "path";
+import fetch from "node-fetch";
 
 const prisma = new PrismaClient();
+
+export const dynamic = "force-dynamic";
+
+async function deleteBlob(blobName) {
+  const token =
+    "vercel_blob_rw_jUHo6lzVKmb7H9EZ_CKeKUeUhEEokt1LfN6xrmbbhpMkamB"; // Replace with your Vercel token
+  const projectId = "prj_tYSSNkO4oeejD8OAxFhmeRgyecqc"; // Replace with your Vercel project ID
+
+  try {
+    const response = await fetch(
+      `https://api.vercel.com/v2/now/files/${projectId}/${blobName}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to delete blob");
+    }
+
+    console.log("Blob deleted successfully");
+  } catch (error) {
+    console.error("Error deleting blob:", error);
+  }
+}
+
+function getBlobNameFromUrl(blobUrl) {
+  try {
+    const url = new URL(blobUrl);
+    const pathParts = url.pathname.split("/");
+    const blobName = pathParts[pathParts.length - 1];
+    return blobName;
+  } catch (error) {
+    console.error("Error extracting blob name:", error);
+    return null;
+  }
+}
 
 export async function POST(req, res) {
   const body = await req.json();
@@ -63,24 +104,9 @@ export async function POST(req, res) {
 
       const blog = await prisma.blogh.findUnique({ where: { id: selectedId } });
 
-      const filenameParts = blog.image.split(".");
-      const fileExtension = filenameParts[filenameParts.length - 1];
+      const BlobName = getBlobNameFromUrl(blog.image);
 
-      const filePath = path.join(
-        process.cwd(),
-        "public",
-        "blog_images",
-        `${blog.slug}.${fileExtension}`
-      );
-
-      // Delete the file
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error("Error deleting file:", err);
-          return;
-        }
-        console.log("File deleted successfully");
-      });
+      deleteBlob(BlobName);
 
       await prisma.blogh.delete({ where: { id: selectedId } });
 
@@ -266,57 +292,13 @@ export async function POST(req, res) {
 
         await prisma.blogh.delete({ where: { id: blog.id } });
       } else {
-        const modifiedSlug = blog.slug;
-        const parts = modifiedSlug.split("-");
-
-        if (parts[parts.length - 1] === "00000") {
-          parts.pop();
-        }
-
-        const originalSlug = parts.join("-");
-
-        const filenameParts = blog.image.split(".");
-        const fileExtension = filenameParts[filenameParts.length - 1];
-
-        const filePath = path.join(
-          process.cwd(),
-          "public",
-          "blog_images",
-          `${originalSlug}.${fileExtension}`
-        );
-
-        // Delete the file
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.error("Error deleting file:", err);
-            return;
-          }
-          console.log("File deleted successfully");
+        const liveblog = await prisma.blogliveh.findFirst({
+          where: { id: blog.bloglive_id },
         });
 
-        const oldSlug = `${originalSlug}-00000`;
-        const newSlug = originalSlug;
+        const BlobName = getBlobNameFromUrl(liveblog.image);
 
-        const oldPath = path.join(
-          process.cwd(),
-          "public",
-          "blog_images",
-          `${oldSlug}.${fileExtension}`
-        );
-        const newPath = path.join(
-          process.cwd(),
-          "public",
-          "blog_images",
-          `${newSlug}.${fileExtension}`
-        );
-
-        fs.rename(oldPath, newPath, (err) => {
-          if (err) {
-            console.error("Error renaming file:", err);
-            return;
-          }
-          console.log("File renamed successfully");
-        });
+        deleteBlob(BlobName);
 
         await prisma.blogliveh.update({
           where: { id: blog.bloglive_id },

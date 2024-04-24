@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import fs, { writeFile } from "fs";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
+import { put } from "@vercel/blob";
 
 const prisma = new PrismaClient();
+
+export const dynamic = "force-dynamic";
 
 export async function PUT(req) {
   try {
@@ -19,6 +22,7 @@ export async function PUT(req) {
     let selectedId = data.get("selectedId");
     selectedId = parseInt(selectedId);
     const previousimage = data.get("previousimage");
+    let blob;
     if (!image) {
       return NextResponse.json({ success1: false });
     }
@@ -97,42 +101,12 @@ export async function PUT(req) {
       const filenameParts = image.name.split(".");
       const fileExtension = filenameParts[filenameParts.length - 1];
 
-      const bytes = await image.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-
-      const path = `./public/blog_images/${slug}.${fileExtension}`;
-      await new Promise((resolve, reject) => {
-        fs.writeFile(path, buffer, (err) => {
-          if (err) reject(err);
-          else resolve();
-        });
+      blob = await put(`${slug}.${fileExtension}`, image, {
+        access: "public",
       });
     }
 
     if (typeof image === "string") {
-      const previousImagePath = `./public/${previousimage}`;
-
-      const fileExtension = path.extname(previousImagePath);
-
-      const trimmedExtension = fileExtension.replace(".", "");
-
-      // const modifiedSlug = slug;
-      // const parts = modifiedSlug.split("-");
-
-      // if (parts[parts.length - 1] === "00000") {
-      //   parts.pop();
-      // }
-
-      // const originalSlug = parts.join("-");
-
-      // const newPath = `./public/blog_images/${originalSlug}.${trimmedExtension}`;
-
-      // if (fs.existsSync(previousImagePath)) {
-      //   fs.renameSync(previousImagePath, newPath); // Rename the previous image file
-      // }
-
-      const newImagePath = `/blog_images/${slug}.${trimmedExtension}`;
-
       if (published === "Y") {
         await prisma.blogh.create({
           data: {
@@ -140,7 +114,7 @@ export async function PUT(req) {
             description,
             content,
             slug,
-            image: newImagePath,
+            image: "",
             published: "N",
             author_id: parseInt(author_id),
             bloglive_id: selectedId,
@@ -155,7 +129,6 @@ export async function PUT(req) {
             description,
             content,
             slug,
-            image: newImagePath,
             published: "N",
             author_id: parseInt(author_id),
             category_id: parseInt(category_id),
@@ -170,11 +143,6 @@ export async function PUT(req) {
     }
 
     if (typeof image === "object") {
-      const filenameParts = image.name.split(".");
-      const fileExtension = filenameParts[filenameParts.length - 1];
-
-      const imagePath = `/blog_images/${slug}.${fileExtension}`;
-
       if (published === "Y") {
         await prisma.blogh.create({
           data: {
@@ -182,7 +150,7 @@ export async function PUT(req) {
             description,
             content,
             slug,
-            image: imagePath,
+            image: blob.url,
             published: "N",
             author_id: parseInt(author_id),
             bloglive_id: selectedId,
@@ -197,7 +165,7 @@ export async function PUT(req) {
             description,
             content,
             slug,
-            image: imagePath,
+            image: blob.url,
             published: "N",
             author_id: parseInt(author_id),
             category_id: parseInt(category_id),

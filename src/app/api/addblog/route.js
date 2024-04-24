@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs, { writeFile } from "fs";
 import { PrismaClient } from "@prisma/client";
+import { put } from "@vercel/blob";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {
@@ -40,23 +43,14 @@ export async function POST(req) {
       const filenameParts = image.name.split(".");
       const fileExtension = filenameParts[filenameParts.length - 1];
 
-      const bytes = await image.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-
-      const path = `./public/blog_images/${slug}.${fileExtension}`;
-      await new Promise((resolve, reject) => {
-        fs.writeFile(path, buffer, (err) => {
-          if (err) reject(err);
-          else resolve();
-        });
+      const blob = await put(`${slug}.${fileExtension}`, image, {
+        access: "public",
       });
-
-      const imagePath = `/blog_images/${slug}.${fileExtension}`;
 
       await prisma.blogh.update({
         where: { id: newBlog.id },
         data: {
-          image: imagePath,
+          image: blob.url,
         },
       });
     }

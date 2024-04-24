@@ -3,6 +3,8 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const dynamic = "force-dynamic";
+
 export async function GET(req, res) {
   try {
     const users = await prisma.userh.findMany({

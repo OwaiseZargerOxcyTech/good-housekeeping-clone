@@ -25,6 +25,8 @@ const GetBlogBySlug = ({ params }) => {
 
   const [blogData, setBlogData] = useState({});
 
+  const [imageData, setImageData] = useState(null);
+
   const { data: session, status } = useSession();
 
   const handleGetBlog = async (e) => {
@@ -75,6 +77,25 @@ const GetBlogBySlug = ({ params }) => {
     }
   }, [session, status]);
 
+  useEffect(() => {
+    async function fetchImage() {
+      try {
+        const response = await fetch(blogData.image);
+        if (!response.ok) {
+          throw new Error("Failed to fetch image");
+        }
+        const blob = await response.blob();
+        setImageData(URL.createObjectURL(blob));
+      } catch (error) {
+        console.error("Error fetching image:", error);
+      }
+    }
+
+    if (blogData.image) {
+      fetchImage();
+    }
+  }, [blogData.image]);
+
   if (status === "loading" || !loadingComplete) {
     return <div>Loading...</div>;
   }
@@ -95,9 +116,10 @@ const GetBlogBySlug = ({ params }) => {
           <div>
             <div className="sm:flex">
               <div className="sm:w-3/5 lg:w-3/4">
-                {blogData.image && (
+                {blogData.image && imageData && (
                   <img
-                    src={`${blogData.image}?t=${new Date().getTime()}`}
+                    // src={`${blogData.image}?t=${new Date().getTime()}`}
+                    src={imageData}
                     alt="img"
                     className="w-full"
                   />

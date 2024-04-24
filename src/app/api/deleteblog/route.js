@@ -2,8 +2,49 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import { PrismaClient } from "@prisma/client";
 import path from "path";
+import fetch from "node-fetch";
 
 const prisma = new PrismaClient();
+
+export const dynamic = "force-dynamic";
+
+async function deleteBlob(blobName) {
+  const token =
+    "vercel_blob_rw_jUHo6lzVKmb7H9EZ_CKeKUeUhEEokt1LfN6xrmbbhpMkamB"; // Replace with your Vercel token
+  const projectId = "prj_tYSSNkO4oeejD8OAxFhmeRgyecqc"; // Replace with your Vercel project ID
+
+  try {
+    const response = await fetch(
+      `https://api.vercel.com/v2/now/files/${projectId}/${blobName}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to delete blob");
+    }
+
+    console.log("Blob deleted successfully");
+  } catch (error) {
+    console.error("Error deleting blob:", error);
+  }
+}
+
+function getBlobNameFromUrl(blobUrl) {
+  try {
+    const url = new URL(blobUrl);
+    const pathParts = url.pathname.split("/");
+    const blobName = pathParts[pathParts.length - 1];
+    return blobName;
+  } catch (error) {
+    console.error("Error extracting blob name:", error);
+    return null;
+  }
+}
 
 export async function DELETE(req) {
   try {
@@ -19,17 +60,15 @@ export async function DELETE(req) {
       return NextResponse.json({ success1: false });
     }
 
-    const previousImagePath = `./public/${previousimage}`;
-
-    if (fs.existsSync(previousImagePath)) {
-      // Delete the file
-      fs.unlinkSync(previousImagePath);
-      console.log("File deleted successfully");
-    } else {
-      console.log("File does not exist");
-    }
-
     if (published === "Y") {
+      const blog = await prisma.blogliveh.findFirst({
+        where: { id: selectedId },
+      });
+
+      const BlobName = getBlobNameFromUrl(blog.image);
+
+      deleteBlob(BlobName);
+
       await prisma.blogliveh.delete({
         where: { id: selectedId },
       });
@@ -39,37 +78,33 @@ export async function DELETE(req) {
       blogLiveId === "null" ||
       blogLiveId === ""
     ) {
+      const blog = await prisma.blogh.findFirst({
+        where: { id: selectedId },
+      });
+
+      const BlobName = getBlobNameFromUrl(blog.image);
+
+      deleteBlob(BlobName);
+
       await prisma.blogh.delete({
         where: { id: selectedId },
       });
     } else {
-      const modifiedSlug = slug;
-      const parts = modifiedSlug.split("-");
-
-      if (parts[parts.length - 1] === "00000") {
-        parts.pop();
-      }
-
-      const originalSlug = parts.join("-");
-
-      const filenameParts = previousimage.split(".");
-      const fileExtension = filenameParts[filenameParts.length - 1];
-
-      const filePath = path.join(
-        process.cwd(),
-        "public",
-        "blog_images",
-        `${originalSlug}.${fileExtension}`
-      );
-
-      // Delete the file
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error("Error deleting file:", err);
-          return;
-        }
-        console.log("File deleted successfully");
+      const blog = await prisma.blogh.findFirst({
+        where: { id: selectedId },
       });
+
+      const BlobName = getBlobNameFromUrl(blog.image);
+
+      deleteBlob(BlobName);
+
+      const liveblog = await prisma.blogliveh.findFirst({
+        where: { id: parseInt(blogLiveId) },
+      });
+
+      const BlobNameLive = getBlobNameFromUrl(liveblog.image);
+
+      deleteBlob(BlobNameLive);
 
       await prisma.blogh.delete({
         where: { id: selectedId },
