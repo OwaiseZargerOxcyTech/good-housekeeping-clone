@@ -3,20 +3,14 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function POST(req, res) {
+export const dynamic = "force-dynamic";
+
+export async function GET(req, res) {
   try {
-    const body = await req.json();
-
-    const { category } = body;
-
-    const categoryData = await prisma.categoryh.findUnique({
-      where: { name: category },
-    });
-
     const blogs = await prisma.blogliveh.findMany({
-      where: { published: "Y", category_id: categoryData.id },
+      where: { published: "Y" },
     });
-
+    console.log("blogs", blogs);
     return NextResponse.json({ result: blogs }, { status: 200 });
   } catch (error) {
     console.error("Error during getting blogs data:", error);

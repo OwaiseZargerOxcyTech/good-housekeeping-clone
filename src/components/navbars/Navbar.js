@@ -44,10 +44,14 @@ function Navbar() {
             </p>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
-            <a className="hover:bg-transparent hover:text-current">HEALTH</a>
+            <p className="hover:bg-transparent hover:text-current">
+              <Link href="/health">HEALTH</Link>
+            </p>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
-            <a className="hover:bg-transparent hover:text-current">FOOD</a>
+            <p className="hover:bg-transparent hover:text-current">
+              <Link href="/food">FOOD</Link>
+            </p>
           </li>
           <li className="font-bold text-xs text-black tracking-widest">
             <p className="hover:bg-transparent hover:text-current">

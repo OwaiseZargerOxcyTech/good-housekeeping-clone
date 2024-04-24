@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const LifeBlogs = () => {
+const HealthBlogs = () => {
   const [blogData, setBlogData] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const LifeBlogs = () => {
           },
           body: JSON.stringify({
             apiName: "getpublishedblogs",
-            category: "Life",
+            category: "Health",
           }),
         });
 
@@ -51,4 +51,4 @@ const LifeBlogs = () => {
   );
 };
 
-export default LifeBlogs;
+export default HealthBlogs;

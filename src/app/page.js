@@ -11,6 +11,22 @@ import SustainableLiving from "@/components/home/SustainableLiving";
 import ThinkGreen from "@/components/home/ThinkGreen";
 import Navbar from "@/components/navbars/Navbar";
 
+export const metadata = {
+  metadataBase: new URL("http://localhost:3000"),
+  keywords: [
+    "Hey Blog User",
+    "Top Life Blogs",
+    "Top Health Blogs",
+    "Top Food Blogs",
+  ],
+  title: {
+    default: "Blog Home Page",
+  },
+  openGraph: {
+    description: "Blog Home Page description",
+  },
+};
+
 export default function Home() {
   return (
     <main>
