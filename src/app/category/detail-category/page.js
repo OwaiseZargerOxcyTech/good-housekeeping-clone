@@ -53,12 +53,6 @@ const DetailCategory = () => {
                 title={secondaryTitle}
                 paragraph={secondaryParagraph}
               />
-              <div className="my-4">
-                <h1 className="text-2xl text-black font-bold mb-4">
-                  Submit Your Comment
-                </h1>
-              </div>
-              <CommentForm />
             </div>
             {/* right side */}
             <div className="sm:m-4 w-full sm:mt-0 sm:w-2/5 lg:w-1/4">
