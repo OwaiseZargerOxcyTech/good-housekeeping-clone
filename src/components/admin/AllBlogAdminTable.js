@@ -282,7 +282,7 @@ const AllBlogAdminTable = () => {
 
   const handleBlogView = async (row) => {
     // router.push(`/blog/${row.original.slug}`);
-    const url = `/blog/${row.original.slug}`;
+    const url = `/blogwn/${row.original.slug}`;
     window.open(url, "_blank");
   };
 
@@ -298,7 +298,7 @@ const AllBlogAdminTable = () => {
 
     // router.push(`/blog/${originalSlug}`);
 
-    const url = `/blog/${originalSlug}`;
+    const url = `/blogwn/${originalSlug}`;
 
     window.open(url, "_blank");
   };
