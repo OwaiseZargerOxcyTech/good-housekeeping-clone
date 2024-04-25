@@ -37,9 +37,9 @@ export async function generateMetadata({ params }) {
 
 const SlugPage = ({ params }) => {
   return (
-    <>
+    <div className="bg-zinc-100">
       <GetBlogBySlug params={params} />
-    </>
+    </div>
   );
 };
 

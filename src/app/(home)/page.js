@@ -30,7 +30,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="hidden sm:flex justify-center py-4 bg-slate-100">
         <img
           src="https://tpc.googlesyndication.com/simgad/14571752723877178338"
@@ -58,7 +58,7 @@ export default function Home() {
       <BeautyLab />
       <MembershipPortal />
       <Latest />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

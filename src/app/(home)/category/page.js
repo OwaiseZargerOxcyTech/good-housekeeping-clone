@@ -7,10 +7,10 @@ import React from "react";
 const Category = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <CategoryHero />
       <CategoryProducts />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

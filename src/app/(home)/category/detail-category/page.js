@@ -28,7 +28,7 @@ const DetailCategory = () => {
   ];
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="detail mt-8 sm:mx-[7%] ">
         <div>
           <div className="sm:flex">
@@ -88,7 +88,7 @@ const DetailCategory = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

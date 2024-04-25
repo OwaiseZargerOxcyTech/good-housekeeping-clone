@@ -1,6 +1,6 @@
 import CategoryHero from "@/components/category/CategoryHero";
-import FoodBlogs from "@/components/food/FoodBlogs";
 import Footer from "@/components/footer/Footer";
+import HealthBlogs from "@/components/health/HealthBlogs";
 import Navbar from "@/components/navbars/Navbar";
 import React from "react";
 
@@ -13,22 +13,22 @@ export const metadata = {
     "Top Food Blogs",
   ],
   title: {
-    default: "Food Page",
+    default: "Health Page",
   },
   openGraph: {
-    description: "Food Page description",
+    description: "Health Page description",
   },
 };
 
-const Food = () => {
+const Health = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <CategoryHero />
-      <FoodBlogs />
-      <Footer />
+      <HealthBlogs />
+      {/* <Footer /> */}
     </div>
   );
 };
 
-export default Food;
+export default Health;

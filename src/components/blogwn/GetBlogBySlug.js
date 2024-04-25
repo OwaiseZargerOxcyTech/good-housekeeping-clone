@@ -111,7 +111,7 @@ const GetBlogBySlug = ({ params }) => {
   return (
     <>
       {canAccessContent && blogData && (
-        <div className="detail mt-8 sm:mx-[7%] ">
+        <div className="detail pt-8 sm:mx-[7%] ">
           <div>
             <div className="sm:flex">
               <div className="sm:w-3/5 lg:w-3/4">
