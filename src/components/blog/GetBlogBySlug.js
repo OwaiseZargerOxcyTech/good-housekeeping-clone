@@ -113,7 +113,7 @@ const GetBlogBySlug = ({ params }) => {
   return (
     <>
       {canAccessContent && blogData && (
-        <>
+        <div>
           <Navbar />
           <div className="detail mt-8 sm:mx-[7%] ">
             <div>
@@ -183,7 +183,7 @@ const GetBlogBySlug = ({ params }) => {
             </div>
           </div>
           <Footer />
-        </>
+        </div>
       )}
     </>
   );
