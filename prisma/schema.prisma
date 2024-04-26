@@ -28,6 +28,8 @@ model Userh {
   model Categoryh {
   id        Int      @id @default(autoincrement())
   name     String   @unique
+  title       String?
+  description String?
   is_active String @default("active")
   blogs     Blogh[]   @relation("CategoryToBlogh")
   blogslive     Blogliveh[]   @relation("CategoryToBlogliveh")

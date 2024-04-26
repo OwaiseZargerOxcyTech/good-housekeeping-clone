@@ -62,9 +62,11 @@ const AddEmployeeForm = () => {
       )}
       <div className="flex justify-center">
         <div className="flex first-letter:card w-full bg-base-100">
-          <form className="card-body items-center">
-            <h1 className="font-bold">Add Employee</h1>
-            <div className="max-w-sm">
+          <form className="card-body">
+            <h1 className="pt-4 text-center text-3xl font-semibold">
+              Add Employee
+            </h1>
+            <div>
               <label className="form-control  w-full">
                 <div className="label ">
                   <span className="label-text font-bold ">UserName</span>
@@ -74,7 +76,7 @@ const AddEmployeeForm = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="johndoe"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control  w-full">
@@ -86,7 +88,7 @@ const AddEmployeeForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="johndoe@gmail.com"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control w-full ">
@@ -98,7 +100,7 @@ const AddEmployeeForm = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="password"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control w-full ">
@@ -112,10 +114,10 @@ const AddEmployeeForm = () => {
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="password"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
-              <div className="flex justify-center col-span-2 mt-3">
+              <div className="flex justify-end col-span-2 mt-3">
                 <button
                   onClick={(e) => handleAddEmployee(e)}
                   className="btn w-24 bg-[#dc2626] text-white"

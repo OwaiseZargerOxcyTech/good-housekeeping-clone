@@ -1,9 +1,8 @@
 "use client";
-import CommentForm from "@/components/category/detail-category/CommentForm";
-import LatestPosts from "@/components/category/detail-category/LatestPosts";
 import SocialMedia from "@/components/common/SocialMedia";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import LatestPosts from "../category/detail-category/LatestPosts";
 
 const GetBlogBySlug = ({ params }) => {
   const [isAdmin, setIsAdmin] = useState("N");
@@ -122,13 +121,6 @@ const GetBlogBySlug = ({ params }) => {
                     dangerouslySetInnerHTML={{ __html: blogData.content }}
                   ></p>
                 </div>
-
-                <div className="my-4">
-                  <h1 className="text-2xl text-black font-bold mb-4">
-                    Submit Your Comment
-                  </h1>
-                </div>
-                <CommentForm />
               </div>
               {/* right side */}
               <div className="sm:m-4 w-full sm:mt-0 sm:w-2/5 lg:w-1/4">

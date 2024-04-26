@@ -358,11 +358,13 @@ export async function POST(req, res) {
     }
   } else if (apiName === "addcategory") {
     try {
-      const { category, selectedIsActive } = body;
+      const { category, selectedIsActive, title, description } = body;
 
       await prisma.categoryh.create({
         data: {
           name: category,
+          title,
+          description,
           is_active: selectedIsActive,
         },
       });
@@ -437,6 +439,39 @@ export async function POST(req, res) {
       console.error("Error during getting blogs data:", error);
       return NextResponse.json(
         { error: "Failed to get blogs data" },
+        { status: 500 }
+      );
+    }
+  } else if (apiName === "getactivecategories") {
+    try {
+      const categories = await prisma.categoryh.findMany({
+        where: { is_active: "active" },
+      });
+
+      return NextResponse.json({ result: categories }, { status: 200 });
+    } catch (error) {
+      console.error("Error during getting active categories data:", error);
+      return NextResponse.json(
+        { error: "Failed to get active categories data" },
+        { status: 500 }
+      );
+    }
+  } else if (apiName === "getcategorystatus") {
+    try {
+      const { category } = body;
+
+      const categoryData = await prisma.categoryh.findFirst({
+        where: { name: category },
+      });
+
+      return NextResponse.json(
+        { result: categoryData.is_active },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.error("Error during getting active categories data:", error);
+      return NextResponse.json(
+        { error: "Failed to get active categories data" },
         { status: 500 }
       );
     }
