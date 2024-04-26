@@ -10,12 +10,16 @@ export default async function sitemap() {
 
   const { result } = await response.json();
 
-  const blogPosts = result?.map((post) => {
-    return {
-      url: `${baseUrl}/blog/${post?.slug}`,
-      lastModified: post?.createdAt,
-    };
-  });
+  let blogPosts = [];
+
+  if (Array.isArray(result)) {
+    blogPosts = result?.map((post) => {
+      return {
+        url: `${baseUrl}/blog/${post?.slug}`,
+        lastModified: post?.createdAt,
+      };
+    });
+  }
 
   return [
     {
