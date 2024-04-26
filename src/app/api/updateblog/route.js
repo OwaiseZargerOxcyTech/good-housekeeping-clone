@@ -82,7 +82,7 @@ export async function PUT(req) {
         blog1.title === title &&
         blog1.description === description &&
         blog1.content === content &&
-        blog1.category_id === category_id
+        blog1.category_id == category_id
       ) {
         return NextResponse.json(
           {
