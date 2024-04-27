@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AddEmployeeForm = () => {
   const [username, setUsername] = useState();
@@ -6,22 +6,17 @@ const AddEmployeeForm = () => {
   const [password, setPassword] = useState();
   const [confirmpassword, setConfirmPassword] = useState();
   const [formSubmitted, setFormSubmitted] = useState();
+  const [toastMessage, setToastMessage] = useState();
 
   const handleAddEmployee = async (e) => {
     try {
       e.preventDefault();
 
       setFormSubmitted(true);
-      setTimeout(async () => {
-        if (password !== confirmpassword) {
-          setUsername("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-          setFormSubmitted(false);
-          return;
-        }
 
+      let error, result;
+
+      if (password === confirmpassword) {
         const response = await fetch("/api/combinedapi", {
           method: "POST",
           headers: {
@@ -35,17 +30,37 @@ const AddEmployeeForm = () => {
           }),
         });
 
-        const { error, result } = await response.json();
+        ({ error, result } = await response.json());
+
+        if (error === undefined) {
+          setToastMessage("Employee Added Successfully");
+          setTimeout(async () => {
+            console.log("inside setTimeout");
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setConfirmPassword("");
+            setFormSubmitted(false);
+          }, 3000);
+        }
 
         if (error !== undefined) {
           console.log("add Employee error:", error);
         }
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        setFormSubmitted(false);
-      }, 3000);
+      }
+
+      if (password !== confirmpassword) {
+        setToastMessage("Password and Confirm Password does not match");
+        setTimeout(() => {
+          console.log("inside password setTimeout");
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          setFormSubmitted(false);
+          setToastMessage("");
+        }, 3000);
+      }
     } catch (error) {
       console.error("add Employee operation error", error);
     }
@@ -53,10 +68,10 @@ const AddEmployeeForm = () => {
 
   return (
     <>
-      {formSubmitted && password !== confirmpassword && (
+      {formSubmitted && (
         <div className="toast toast-top toast-end">
           <div className="alert alert-info">
-            <span>Password and Confirm Password does not match</span>
+            <span>{toastMessage}</span>
           </div>
         </div>
       )}
