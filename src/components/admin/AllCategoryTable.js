@@ -9,6 +9,8 @@ const AllCategoryTable = () => {
   const [category, setCategory] = useState("");
   const [selectedId, setSelectedId] = useState();
   const [selectedIsActive, setSelectedIsActive] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const columns = useMemo(
     () => [
       {
@@ -99,6 +101,9 @@ const AllCategoryTable = () => {
     setSelectedId(row.original.id);
     setCategory(row.original.name);
     setSelectedIsActive(row.original.is_active);
+    console.log("row.original.title", row.original.title);
+    setTitle(row.original.title);
+    setDescription(row.original.description);
   };
 
   const handleCategoryUpdate = async (e) => {
@@ -115,6 +120,8 @@ const AllCategoryTable = () => {
           selectedId,
           category,
           selectedIsActive,
+          title,
+          description,
         }),
       });
 
@@ -129,6 +136,8 @@ const AllCategoryTable = () => {
       if (updateDialog) {
         updateDialog.close();
       }
+      setTitle("");
+      setDescription("");
     } catch (error) {
       console.error("Category Update operation error", error);
     }
@@ -177,6 +186,34 @@ const AllCategoryTable = () => {
               name="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              className="input input-bordered w-full placeholder-gray-500"
+            />
+          </label>
+
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text">Title</span>
+            </div>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={title || ""}
+              onChange={(e) => setTitle(e.target.value)}
+              className="input input-bordered w-full placeholder-gray-500"
+            />
+          </label>
+
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text">Meta Description</span>
+            </div>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={description || ""}
+              onChange={(e) => setDescription(e.target.value)}
               className="input input-bordered w-full placeholder-gray-500"
             />
           </label>

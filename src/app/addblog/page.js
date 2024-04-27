@@ -75,7 +75,7 @@ const AddBlog = () => {
   }, []);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session) {
@@ -135,7 +135,7 @@ const AddBlog = () => {
         setImageName("");
         window.location.href = "/allblogadmin";
         setFormSubmitted(false);
-      }, 1000);
+      }, 3000);
     } catch (error) {
       console.error("Blog addition operation error", error);
     }

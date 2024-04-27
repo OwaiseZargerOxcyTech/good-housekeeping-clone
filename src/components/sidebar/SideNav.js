@@ -22,7 +22,7 @@ export default function SideNav() {
       <div className="space-y-3">
         {userRole === "admin" && (
           <Link
-            href="/addemployee"
+            href="/addemployeeadmin"
             className="facebookBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
@@ -33,7 +33,7 @@ export default function SideNav() {
         )}{" "}
         {userRole === "admin" && (
           <Link
-            href="/allemployee"
+            href="/allemployeeadmin"
             className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
@@ -44,7 +44,7 @@ export default function SideNav() {
         )}
         {userRole === "admin" && (
           <Link
-            href="/addcategory"
+            href="/addcategoryadmin"
             className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
@@ -55,7 +55,7 @@ export default function SideNav() {
         )}
         {userRole === "admin" && (
           <Link
-            href="/allcategory"
+            href="/allcategoryadmin"
             className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
@@ -92,6 +92,17 @@ export default function SideNav() {
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
               <span className="text-base font-semibold"> All Blog</span>
+            </div>
+          </Link>
+        )}
+        {userRole === "admin" && (
+          <Link
+            href="/addfaviconadmin"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+          >
+            <div className="flex justify-start items-center space-x-2">
+              {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
+              <span className="text-base font-semibold"> Add Favicon</span>
             </div>
           </Link>
         )}

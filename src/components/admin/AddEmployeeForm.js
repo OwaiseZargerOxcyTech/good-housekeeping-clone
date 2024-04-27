@@ -45,7 +45,7 @@ const AddEmployeeForm = () => {
         setPassword("");
         setConfirmPassword("");
         setFormSubmitted(false);
-      }, 1000);
+      }, 3000);
     } catch (error) {
       console.error("add Employee operation error", error);
     }

@@ -2,13 +2,13 @@
 import Footer from "@/components/footer/Footer";
 import { useSession } from "next-auth/react";
 import SideNav from "@/components/sidebar/SideNav";
-import AddEmployeeForm from "@/components/admin/AddEmployeeForm";
+import AddCategoryForm from "@/components/admin/AddCategoryForm";
 
 export default function Page() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session || session.user.name !== "admin") {
@@ -24,7 +24,7 @@ export default function Page() {
           </div>
 
           <div className="col-span-9">
-            <AddEmployeeForm />
+            <AddCategoryForm />
           </div>
         </div>
       </div>

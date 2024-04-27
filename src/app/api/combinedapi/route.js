@@ -7,8 +7,17 @@ import path from "path";
 const prisma = new PrismaClient();
 
 export async function POST(req, res) {
-  const body = await req.json();
-  const { apiName } = body;
+  let apiName;
+  let body;
+  let data;
+  const contentType = req.headers.get("Content-Type");
+  if (contentType.includes("application/json")) {
+    body = await req.json();
+    ({ apiName } = body);
+  } else if (contentType.includes("multipart/form-data")) {
+    data = await req.formData();
+    apiName = data.get("apiName");
+  }
   if (apiName === "addemployee") {
     try {
       const { username, email, password } = body;
@@ -35,25 +44,22 @@ export async function POST(req, res) {
         { status: 500 }
       );
     }
-  } else if (apiName === "blockemployee") {
+  } else if (apiName === "deleteemployee") {
     try {
       const { selectedId } = body;
 
-      await prisma.userh.update({
+      await prisma.userh.delete({
         where: { id: selectedId },
-        data: {
-          blocked: "Y",
-        },
       });
 
       return NextResponse.json(
-        { result: "successfully blocked employee" },
+        { result: "successfully deleted employee" },
         { status: 200 }
       );
     } catch (error) {
-      console.error("Error during blocking employee:", error);
+      console.error("Error during deleting employee:", error);
       return NextResponse.json(
-        { error: "Failed to block employee" },
+        { error: "Failed to delete employee" },
         { status: 500 }
       );
     }
@@ -382,13 +388,16 @@ export async function POST(req, res) {
     }
   } else if (apiName === "updatecategory") {
     try {
-      const { category, selectedId, selectedIsActive } = body;
+      const { category, selectedId, selectedIsActive, title, description } =
+        body;
 
       await prisma.categoryh.update({
         where: { id: selectedId },
         data: {
           name: category,
           is_active: selectedIsActive,
+          title,
+          description,
         },
       });
 
@@ -475,7 +484,78 @@ export async function POST(req, res) {
         { status: 500 }
       );
     }
-  }
+  } else if (apiName === "getcategory") {
+    try {
+      const { categoryslug } = body;
 
+      const categoryData = await prisma.categoryh.findFirst({
+        where: { name: categoryslug },
+      });
+
+      return NextResponse.json({ result: categoryData }, { status: 200 });
+    } catch (error) {
+      console.error("Error during getting active category data:", error);
+      return NextResponse.json(
+        { error: "Failed to get active category data" },
+        { status: 500 }
+      );
+    }
+  } else if (apiName === "addfavicon") {
+    const image = data.get("image");
+    if (typeof image === "object") {
+      const bytes = await image.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+
+      const path = `./public/favicon/favicon.ico`;
+      await new Promise((resolve, reject) => {
+        fs.writeFile(path, buffer, (err) => {
+          if (err) reject(err);
+          else resolve();
+        });
+      });
+      const favicon = await prisma.faviconh.findFirst();
+      if (!favicon) {
+        const imagePath = `/favicon/favicon.ico`;
+
+        await prisma.faviconh.create({
+          data: {
+            image: imagePath,
+          },
+        });
+      }
+    }
+  } else if (apiName === "getblogcountforemp") {
+    try {
+      const { selectedId } = body;
+
+      const blogsCountResult = await prisma.$queryRaw`
+    SELECT COUNT(*)
+    FROM (
+      SELECT
+        1
+        FROM public."Blogh" b
+      WHERE b.author_id = ${selectedId}
+    
+      UNION ALL
+    
+      SELECT
+        1
+        FROM public."Blogliveh" bl
+      LEFT JOIN public."Blogh" b ON bl.id = b.bloglive_id
+      WHERE bl.author_id = ${selectedId} and b.bloglive_id IS NULL
+    ) AS combined;
+    `;
+
+      const blogscount = parseInt(blogsCountResult[0].count);
+
+      return NextResponse.json({ result: blogscount }, { status: 200 });
+    } catch (error) {
+      console.error("Error during getting employee blogs count data:", error);
+      return NextResponse.json(
+        { error: "Failed to get employee blogs count data" },
+        { status: 500 }
+      );
+    }
+  }
   return NextResponse.json({ error: "Invalid API name" }, { status: 400 });
 }

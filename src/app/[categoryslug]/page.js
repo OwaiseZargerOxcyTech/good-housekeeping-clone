@@ -4,21 +4,40 @@ import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbars/Navbar";
 import React from "react";
 
-export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
-  keywords: [
-    "Hey Blog User",
-    "Top Life Blogs",
-    "Top Health Blogs",
-    "Top Food Blogs",
-  ],
-  title: {
-    default: "Life Page",
-  },
-  openGraph: {
-    description: "Life Page description",
-  },
-};
+export async function generateMetadata({ params }) {
+  const { categoryslug } = params;
+  try {
+    const baseUrl = "http://localhost:3000";
+    const response = await fetch(baseUrl + "/api/combinedapi", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ apiName: "getcategory", categoryslug }),
+    });
+
+    const { result } = await response.json();
+    if (!result) {
+      return {
+        title: "Not Found",
+        description: "The page you are looking for does not exist",
+      };
+    }
+    return {
+      title: result?.title,
+      openGraph: {
+        description: result?.description,
+        images: [result?.image],
+      },
+    };
+  } catch (error) {
+    console.log("error", error);
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exist",
+    };
+  }
+}
 
 const SlugPage = ({ params }) => {
   return (

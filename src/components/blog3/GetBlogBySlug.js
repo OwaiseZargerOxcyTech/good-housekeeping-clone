@@ -67,7 +67,7 @@ const GetBlogBySlug = ({ params }) => {
   }, [session, status]);
 
   if (status === "loading" || !loadingComplete) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const canAccessContent =

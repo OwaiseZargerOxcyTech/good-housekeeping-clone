@@ -5,6 +5,7 @@ const AddCategoryForm = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [selectedIsActive, setSelectedIsActive] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState();
 
   const handleIsActiveChange = (event) => {
     setSelectedIsActive(event.target.value);
@@ -33,7 +34,15 @@ const AddCategoryForm = () => {
       if (error !== undefined) {
         console.log("add Category error:", error);
       }
+      if (error === undefined) {
+        setFormSubmitted(true);
+        setTimeout(async () => {
+          setFormSubmitted(false);
+        }, 3000);
+      }
       setCategory("");
+      setTitle("");
+      setDescription("");
     } catch (error) {
       console.error("add Category operation error", error);
     }
@@ -41,6 +50,13 @@ const AddCategoryForm = () => {
 
   return (
     <>
+      {formSubmitted && (
+        <div className="toast toast-top toast-end z-50">
+          <div className="alert alert-info">
+            <span>Category Added Successfully</span>
+          </div>
+        </div>
+      )}
       <div className="flex justify-center">
         <div className="flex first-letter:card w-full bg-base-100">
           <form className="card-body">
