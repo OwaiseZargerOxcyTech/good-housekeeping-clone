@@ -12,6 +12,7 @@ const AllEmployeeTable = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [selectedId, setSelectedId] = useState();
   const [formSubmitted, setFormSubmitted] = useState();
+  const [empBlogCount, setEmpBlogCount] = useState();
   const columns = useMemo(
     () => [
       {
@@ -54,7 +55,6 @@ const AllEmployeeTable = () => {
             <button>
               <TrashIcon
                 onClick={() => {
-                  document.getElementById("delete_modal").showModal();
                   handleEmployeeDelete(row);
                 }}
                 className="h-5 w-5 text-red-500"
@@ -144,28 +144,55 @@ const AllEmployeeTable = () => {
     }
   };
 
-  const handleEmployeeDelete = (row) => {
+  const handleEmployeeDelete = async (row) => {
     setSelectedId(row.original.id);
-  };
 
-  const blockEmployee = async () => {
     try {
       const response = await fetch("/api/combinedapi", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ apiName: "blockemployee", selectedId }),
+        body: JSON.stringify({
+          apiName: "getblogcountforemp",
+          selectedId: row.original.id,
+        }),
+      });
+
+      const { error, result } = await response.json();
+
+      setEmpBlogCount(result);
+      setTimeout(
+        () => document.getElementById("delete_modal").showModal(),
+        500
+      );
+
+      if (error !== undefined) {
+        console.log("Blog Count for Employee error:", error);
+      }
+    } catch (error) {
+      console.error("employee blog count operation error", error);
+    }
+  };
+
+  const deleteEmployee = async () => {
+    try {
+      const response = await fetch("/api/combinedapi", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ apiName: "deleteemployee", selectedId }),
       });
 
       const { error, result } = await response.json();
 
       if (error !== undefined) {
-        console.log("Block Employee error:", error);
+        console.log("Delete Employee error:", error);
       }
       handleGetEmployees();
     } catch (error) {
-      console.error("employee block operation error", error);
+      console.error("employee delete operation error", error);
     }
   };
 
@@ -255,15 +282,24 @@ const AllEmployeeTable = () => {
       <dialog id="delete_modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Block Employee</h3>
-          <p className="py-4">Are you sure you want to block this employee ?</p>
+          {empBlogCount > 0 ? (
+            <p className="py-4">
+              {empBlogCount} blogs are assigned to employee, please reassign to
+              other employee or admin
+            </p>
+          ) : (
+            <p className="py-4">
+              Are you sure you want to delete this employee ?
+            </p>
+          )}
           <div className="modal-action">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button
-                onClick={blockEmployee}
+                onClick={deleteEmployee}
                 className="btn mr-4 bg-[#dc2626] hover:bg-[#dc2626] text-white"
               >
-                Block
+                Delete
               </button>
               <button className="btn">Close</button>
             </form>

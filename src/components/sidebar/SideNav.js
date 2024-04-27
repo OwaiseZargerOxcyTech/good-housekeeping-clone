@@ -22,8 +22,8 @@ export default function SideNav() {
       <div className="space-y-3">
         {userRole === "admin" && (
           <Link
-            href="/addemployee"
-            className="facebookBtn block bg-[#79ADFF] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            href="/addemployeeadmin"
+            className="facebookBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-facebook text-2xl font-bold"></i> */}
@@ -33,8 +33,8 @@ export default function SideNav() {
         )}{" "}
         {userRole === "admin" && (
           <Link
-            href="/allemployee"
-            className="linkedinBtn block bg-[#29B4FF] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            href="/allemployeeadmin"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
@@ -44,8 +44,8 @@ export default function SideNav() {
         )}
         {userRole === "admin" && (
           <Link
-            href="/addcategory"
-            className="linkedinBtn block bg-[#9E7CF7] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            href="/addcategoryadmin"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
@@ -55,8 +55,8 @@ export default function SideNav() {
         )}
         {userRole === "admin" && (
           <Link
-            href="/allcategory"
-            className="linkedinBtn block bg-[#79ADFF] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            href="/allcategoryadmin"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
@@ -66,7 +66,7 @@ export default function SideNav() {
         )}
         <Link
           href="/addblog"
-          className="instagramBtn block bg-[#29B4FF] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+          className="instagramBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
         >
           <div className="flex justify-start items-center space-x-2">
             {/* <i className="bi bi-instagram text-2xl font-bold"></i> */}
@@ -76,7 +76,7 @@ export default function SideNav() {
         {userRole === "admin" && (
           <Link
             href="/allblogadmin"
-            className="linkedinBtn block bg-[#9E7CF7] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
@@ -87,11 +87,22 @@ export default function SideNav() {
         {userRole === "employee" && (
           <Link
             href="/allblogemployee"
-            className="linkedinBtn block bg-[#79ADFF] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
           >
             <div className="flex justify-start items-center space-x-2">
               {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
               <span className="text-base font-semibold"> All Blog</span>
+            </div>
+          </Link>
+        )}
+        {userRole === "admin" && (
+          <Link
+            href="/addfaviconadmin"
+            className="linkedinBtn block bg-[#8a8883] hover:scale-105 transition duration-300 text-white  px-4 py-2  rounded-md"
+          >
+            <div className="flex justify-start items-center space-x-2">
+              {/* <i className="bi bi-linkedin text-2xl font-bold"></i> */}
+              <span className="text-base font-semibold"> Add Favicon</span>
             </div>
           </Link>
         )}

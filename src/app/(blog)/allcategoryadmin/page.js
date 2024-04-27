@@ -2,13 +2,13 @@
 import Footer from "@/components/footer/Footer";
 import SideNav from "@/components/sidebar/SideNav";
 import { useSession } from "next-auth/react";
-import AllEmployeeTable from "@/components/admin/AllEmployeeTable";
+import AllCategoryTable from "@/components/admin/AllCategoryTable";
 
 export default function Page() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session || session.user.name !== "admin") {
@@ -23,13 +23,10 @@ export default function Page() {
           </div>
 
           <div className="col-span-9">
-            <AllEmployeeTable />
+            <AllCategoryTable />
           </div>
         </div>
       </div>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }

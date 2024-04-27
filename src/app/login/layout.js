@@ -1,7 +1,6 @@
 // import "./globals.css";
 import "../globals.css";
 import { inter } from "@/components/common/fonts";
-import AdminEmpFooter from "@/components/footer/AdminEmpFooter";
 import AuthProviders from "@/components/providers/AuthProviders";
 
 // export const metadata = {
@@ -26,9 +25,6 @@ export default function BlogLayout({ children }) {
           <div>{children}</div>
         </AuthProviders>
       </body>
-      <footer>
-        <AdminEmpFooter />
-      </footer>
     </html>
   );
 }

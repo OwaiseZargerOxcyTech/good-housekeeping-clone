@@ -98,7 +98,7 @@ const GetBlogBySlug = ({ params }) => {
   }, [blogData.image]);
 
   if (status === "loading" || !loadingComplete) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   const canAccessContent =

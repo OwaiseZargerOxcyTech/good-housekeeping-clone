@@ -28,6 +28,8 @@ model Userh {
   model Categoryh {
   id        Int      @id @default(autoincrement())
   name     String   @unique
+  title       String?
+  description String?
   is_active String @default("active")
   blogs     Blogh[]   @relation("CategoryToBlogh")
   blogslive     Blogliveh[]   @relation("CategoryToBlogliveh")
@@ -64,6 +66,11 @@ model Blogliveh {
   author_id   Int
   category      Categoryh      @relation("CategoryToBlogliveh", fields: [category_id], references: [id])
   category_id   Int
+}
+
+ model Faviconh {
+  id          Int       @id @default(autoincrement())
+  image       String?
 }
 
 model User {

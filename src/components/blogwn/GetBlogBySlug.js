@@ -96,13 +96,10 @@ const GetBlogBySlug = ({ params }) => {
   }, [blogData.image]);
 
   if (status === "loading" || !loadingComplete) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
-  const canAccessContent =
-    isAdmin === "Y" ||
-    blogData.published === "Y" ||
-    blogData.author_id == userId;
+  const canAccessContent = isAdmin === "Y" || blogData.author_id == userId;
 
   if (!canAccessContent) {
     return <div>Access Denied</div>;

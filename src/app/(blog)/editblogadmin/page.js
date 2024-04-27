@@ -148,7 +148,7 @@ const EditBlog = () => {
   }, [blog, users, categories]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session || session.user.name !== "admin") {
@@ -371,9 +371,6 @@ const EditBlog = () => {
           </div>
         </div>
       </div>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 };

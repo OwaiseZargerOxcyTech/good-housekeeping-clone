@@ -1,9 +1,38 @@
 // Navbar.js
-
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import React from "react";
 
 function Navbar() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/combinedapi", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            apiName: "getactivecategories",
+          }),
+        });
+
+        const { error, result } = await response.json();
+
+        if (error !== undefined) {
+          console.log("Categories Get error:", error);
+        }
+        setCategories(result);
+      } catch (error) {
+        console.error("Categories Get operation error", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:sticky top-0 z-50 bg-white shadow-sm p-0">
       {/* Content of your navbar */}
@@ -33,31 +62,16 @@ function Navbar() {
       <div className="nav-list overflow-x-auto ">
         <ul className="menu menu-horizontal flex-nowrap  sm:space-x-6">
           {/* List items */}
-          <li className="font-bold text-xs text-black tracking-widest">
-            <a className="hover:bg-transparent hover:text-current">
-              PRODUCT REVIEWS
-            </a>
-          </li>
-          <li className="font-bold text-xs text-black tracking-widest">
-            <p className="hover:bg-transparent hover:text-current">
-              <Link href="/life">LIFE</Link>
-            </p>
-          </li>
-          <li className="font-bold text-xs text-black tracking-widest">
-            <p className="hover:bg-transparent hover:text-current">
-              <Link href="/health">HEALTH</Link>
-            </p>
-          </li>
-          <li className="font-bold text-xs text-black tracking-widest">
-            <p className="hover:bg-transparent hover:text-current">
-              <Link href="/food">FOOD</Link>
-            </p>
-          </li>
-          <li className="font-bold text-xs text-black tracking-widest">
-            <p className="hover:bg-transparent hover:text-current">
-              <Link href="/category">CATEGORY</Link>
-            </p>
-          </li>
+          {categories.map((category) => (
+            <li
+              key={category.id}
+              className="font-bold text-xs text-black tracking-widest"
+            >
+              <p className="hover:bg-transparent hover:text-current">
+                <Link href={`/${category.name}`}>{category.name}</Link>
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
 

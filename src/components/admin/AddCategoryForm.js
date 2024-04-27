@@ -3,6 +3,9 @@ import React, { useState } from "react";
 const AddCategoryForm = () => {
   const [category, setCategory] = useState();
   const [selectedIsActive, setSelectedIsActive] = useState("");
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+  const [formSubmitted, setFormSubmitted] = useState();
 
   const handleIsActiveChange = (event) => {
     setSelectedIsActive(event.target.value);
@@ -20,6 +23,8 @@ const AddCategoryForm = () => {
         body: JSON.stringify({
           apiName: "addcategory",
           category,
+          title,
+          description,
           selectedIsActive,
         }),
       });
@@ -29,7 +34,15 @@ const AddCategoryForm = () => {
       if (error !== undefined) {
         console.log("add Category error:", error);
       }
+      if (error === undefined) {
+        setFormSubmitted(true);
+        setTimeout(async () => {
+          setFormSubmitted(false);
+        }, 3000);
+      }
       setCategory("");
+      setTitle("");
+      setDescription("");
     } catch (error) {
       console.error("add Category operation error", error);
     }
@@ -37,11 +50,20 @@ const AddCategoryForm = () => {
 
   return (
     <>
+      {formSubmitted && (
+        <div className="toast toast-top toast-end z-50">
+          <div className="alert alert-info">
+            <span>Category Added Successfully</span>
+          </div>
+        </div>
+      )}
       <div className="flex justify-center">
         <div className="flex first-letter:card w-full bg-base-100">
-          <form className="card-body items-center">
-            <h1 className="font-bold">Add Category</h1>
-            <div className="max-w-sm">
+          <form className="card-body ">
+            <h1 className="pt-4 text-center text-3xl font-semibold">
+              Add Category
+            </h1>
+            <div>
               <label className="form-control  w-full">
                 <div className="label ">
                   <span className="label-text font-bold ">Category</span>
@@ -51,7 +73,35 @@ const AddCategoryForm = () => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   placeholder="Life"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
+                />
+              </label>
+
+              <label className="form-control  w-full">
+                <div className="label ">
+                  <span className="label-text font-bold ">Title</span>
+                </div>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Title"
+                  className="input input-bordered w-full  placeholder-gray-500"
+                />
+              </label>
+
+              <label className="form-control  w-full">
+                <div className="label ">
+                  <span className="label-text font-bold ">
+                    Meta description
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Meta description"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
 
@@ -78,7 +128,7 @@ const AddCategoryForm = () => {
                 )}
               </select>
 
-              <div className="flex justify-center col-span-2 mt-3">
+              <div className="flex justify-end col-span-2 mt-3">
                 <button
                   onClick={(e) => handleAddCategory(e)}
                   className="btn w-24 bg-[#dc2626] text-white"

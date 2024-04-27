@@ -1,20 +1,19 @@
 "use client";
 import Footer from "@/components/footer/Footer";
-import { useSession } from "next-auth/react";
 import SideNav from "@/components/sidebar/SideNav";
-import AddCategoryForm from "@/components/admin/AddCategoryForm";
+import { useSession } from "next-auth/react";
+import AllEmployeeTable from "@/components/admin/AllEmployeeTable";
 
 export default function Page() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session || session.user.name !== "admin") {
     return <div>Access Denied</div>;
   }
-
   return (
     <>
       <div className=" px-6 py-10 sm:px-8 sm:py-16 ">
@@ -24,13 +23,10 @@ export default function Page() {
           </div>
 
           <div className="col-span-9">
-            <AddCategoryForm />
+            <AllEmployeeTable />
           </div>
         </div>
       </div>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }

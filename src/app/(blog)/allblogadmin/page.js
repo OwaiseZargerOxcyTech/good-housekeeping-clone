@@ -8,7 +8,7 @@ export default function Page() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (!session || session.user.name !== "admin") {
@@ -27,9 +27,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <footer>
-        <Footer />
-      </footer>
     </>
   );
 }

@@ -6,22 +6,17 @@ const AddEmployeeForm = () => {
   const [password, setPassword] = useState();
   const [confirmpassword, setConfirmPassword] = useState();
   const [formSubmitted, setFormSubmitted] = useState();
+  const [toastMessage, setToastMessage] = useState();
 
   const handleAddEmployee = async (e) => {
     try {
       e.preventDefault();
 
       setFormSubmitted(true);
-      setTimeout(async () => {
-        if (password !== confirmpassword) {
-          setUsername("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-          setFormSubmitted(false);
-          return;
-        }
 
+      let error, result;
+
+      if (password === confirmpassword) {
         const response = await fetch("/api/combinedapi", {
           method: "POST",
           headers: {
@@ -35,17 +30,37 @@ const AddEmployeeForm = () => {
           }),
         });
 
-        const { error, result } = await response.json();
+        ({ error, result } = await response.json());
+
+        if (error === undefined) {
+          setToastMessage("Employee Added Successfully");
+          setTimeout(async () => {
+            console.log("inside setTimeout");
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setConfirmPassword("");
+            setFormSubmitted(false);
+          }, 3000);
+        }
 
         if (error !== undefined) {
           console.log("add Employee error:", error);
         }
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        setFormSubmitted(false);
-      }, 1000);
+      }
+
+      if (password !== confirmpassword) {
+        setToastMessage("Password and Confirm Password does not match");
+        setTimeout(() => {
+          console.log("inside password setTimeout");
+          setUsername("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          setFormSubmitted(false);
+          setToastMessage("");
+        }, 3000);
+      }
     } catch (error) {
       console.error("add Employee operation error", error);
     }
@@ -53,18 +68,20 @@ const AddEmployeeForm = () => {
 
   return (
     <>
-      {formSubmitted && password !== confirmpassword && (
+      {formSubmitted && (
         <div className="toast toast-top toast-end">
           <div className="alert alert-info">
-            <span>Password and Confirm Password does not match</span>
+            <span>{toastMessage}</span>
           </div>
         </div>
       )}
       <div className="flex justify-center">
         <div className="flex first-letter:card w-full bg-base-100">
-          <form className="card-body items-center">
-            <h1 className="font-bold">Add Employee</h1>
-            <div className="max-w-sm">
+          <form className="card-body ">
+            <h1 className="pt-4 text-center text-3xl font-semibold">
+              Add Employee
+            </h1>
+            <div>
               <label className="form-control  w-full">
                 <div className="label ">
                   <span className="label-text font-bold ">UserName</span>
@@ -74,7 +91,7 @@ const AddEmployeeForm = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="johndoe"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control  w-full">
@@ -86,7 +103,7 @@ const AddEmployeeForm = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="johndoe@gmail.com"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control w-full ">
@@ -98,7 +115,7 @@ const AddEmployeeForm = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="password"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
               <label className="form-control w-full ">
@@ -112,10 +129,10 @@ const AddEmployeeForm = () => {
                   value={confirmpassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="password"
-                  className="input input-bordered w-full  font-bold"
+                  className="input input-bordered w-full  placeholder-gray-500"
                 />
               </label>
-              <div className="flex justify-center col-span-2 mt-3">
+              <div className="flex justify-end col-span-2 mt-3">
                 <button
                   onClick={(e) => handleAddEmployee(e)}
                   className="btn w-24 bg-[#dc2626] text-white"
