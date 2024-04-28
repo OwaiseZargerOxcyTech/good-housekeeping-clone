@@ -1,5 +1,5 @@
 // import "./globals.css";
-import "../../globals.css";
+import "../../../globals.css";
 import { inter } from "@/components/common/fonts";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbars/Navbar";

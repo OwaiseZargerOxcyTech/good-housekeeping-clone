@@ -2,7 +2,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import React from "react";
 
 function Navbar() {
   const [categories, setCategories] = useState([]);

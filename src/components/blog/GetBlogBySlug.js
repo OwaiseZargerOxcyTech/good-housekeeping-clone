@@ -3,8 +3,6 @@ import LatestPosts from "@/components/category/detail-category/LatestPosts";
 import SocialMedia from "@/components/common/SocialMedia";
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import Navbar from "../navbars/Navbar";
-import Footer from "../footer/Footer";
 
 const GetBlogBySlug = ({ params }) => {
   const [isAdmin, setIsAdmin] = useState("N");
@@ -114,7 +112,6 @@ const GetBlogBySlug = ({ params }) => {
     <>
       {canAccessContent && blogData && (
         <div>
-          {/* <Navbar /> */}
           <div className="detail mt-8 sm:mx-[7%] ">
             <div>
               <div className="sm:flex">
@@ -182,7 +179,6 @@ const GetBlogBySlug = ({ params }) => {
               </div>
             </div>
           </div>
-          {/* <Footer /> */}
         </div>
       )}
     </>
